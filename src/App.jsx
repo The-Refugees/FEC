@@ -1,5 +1,6 @@
 import React from 'react';
-import Overview from './overview/overview.jsx'
+import Overview from './overview/overview.jsx';
+import RatingsReviews from './reviews/RatingsReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,11 +11,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div> Hello World
+      <div>
+        <h1>Hello World</h1>
         <Overview />
+        <RatingsReviews />
       </div>
       // Questions and Answers
-      // Ratings and Reviews
     );
   };
 }

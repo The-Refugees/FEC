@@ -9,9 +9,11 @@ const RatingsReviews = (props) => {
 
   return (
     <div id="ratingsreviews">
-      Hello RatingsReviews!
+      <h2>Ratings and Reviews</h2>
       <Ratings />
       <Reviews />
     </div>
   )
 }
+
+export default RatingsReviews;
