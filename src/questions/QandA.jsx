@@ -20,7 +20,7 @@ function QandA() {
 
   return (
     <div>
-      <h1>questions yo</h1>
+      <h1>Questions and Answers</h1>
       <QuestionsSearch/>
       <QuestionsList/>
     </div>
