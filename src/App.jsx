@@ -14,13 +14,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div> Hello World
-        <Overview product={data.results} style={0}/>
+      <div>
+        <h1>Hello World</h1>
+        <Overview product={data.results} style={0} />
         <QandA/>
         <RatingsReviews />
       </div>
-      // Questions and Answers
-      // Ratings and Reviews
     );
   };
 }
