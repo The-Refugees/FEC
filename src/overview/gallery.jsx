@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import PhotoItem from './PhotoItem.jsx';
 
-class Gallery extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {photos: [{},{},{}]};
+function Gallery (props) {
+
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
   }
-  componentDidMount() {
-    this.setState({photos: this.props.photos})
-  }
-  render() {
-    return (
-      <div>Gallery in the House!
-        {Object.keys(this.state.photos[0])}
-      </div>
-    );
-  }
+
+  return (
+    <Carousel activeIndex={index} onSelect={handleSelect}>
+      {props.photos.map((item, i) => {
+        return <PhotoItem picture={item} key={i} name={props.name}/>
+      })}
+    </Carousel>
+  );
 }
 
 export default Gallery;
+
+
+
+/*<PhotoItem picture = {this.state.photos[0]}/>*/
