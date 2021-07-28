@@ -12,7 +12,7 @@ function Gallery (props) {
   return (
     <Carousel interval={null} activeIndex={index} onSelect={handleSelect}>
       {props.photos.map((item, i) => {
-        return <Carousel.Item >
+        return <Carousel.Item key={i} >
           <img
           className="d-block w-100"
           src={item.url}

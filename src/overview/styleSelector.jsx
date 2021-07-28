@@ -11,7 +11,7 @@ class StyleSelector extends React.Component {
       <div>
         <div>STYLE > SELECTED STYLE</div>
         <div>a bunch of nicely formated buttons layed out in a grid that we can press to update style</div>
-        <div>thats all folks.</div>
+        <div>.</div>
       </div>
     );
   }
