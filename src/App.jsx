@@ -1,7 +1,9 @@
 import React from 'react';
-import Overview from './overview/overview.jsx';
+import Overview from './overview/overview.jsx'
 import QandA from './questions/QandA.jsx';
 import RatingsReviews from './reviews/RatingsReviews.jsx';
+import data from './overview/data.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,11 +16,10 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello World</h1>
-        <Overview />
+        <Overview product={data}/>
         <QandA/>
         <RatingsReviews />
       </div>
-      // Questions and Answers
     );
   };
 }
