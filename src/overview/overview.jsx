@@ -4,7 +4,7 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import axios from 'axios';
-//import AUTH_TOKEN from './config.js';
+import AUTH_TOKEN from '../config.js';
 
 
 function Overview (props) {
