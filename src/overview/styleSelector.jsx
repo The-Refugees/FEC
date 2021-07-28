@@ -8,7 +8,11 @@ class StyleSelector extends React.Component {
 
   render() {
     return (
-      <div>Style Selector in the House!</div>
+      <div>
+        <div>STYLE > SELECTED STYLE</div>
+        <div>a bunch of nicely formated buttons layed out in a grid that we can press to update style</div>
+        <div>thats all folks.</div>
+      </div>
     );
   }
 }

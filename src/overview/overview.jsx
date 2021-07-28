@@ -4,7 +4,11 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import axios from 'axios';
-//import AUTH_TOKEN from './config.js';
+import AUTH_TOKEN from '../config.js';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 
 function Overview (props) {
@@ -30,12 +34,25 @@ function Overview (props) {
 
 
   return (
-    <div>Overview in the House!
-      <Gallery photos={styleInfo.photos}/>
-      <ProductInfo />
-      <StyleSelector />
-      <AddToCart />
-    </div>
+    <Container fluid>
+      <div>Overview info here!</div>
+      <Row sm={2} md={2} lg={2}>
+        <Col >
+          <Gallery photos={styleInfo.photos}/>
+        </Col>
+        <Col sm={3} md={3} lg={3}>
+          <Row>
+            <ProductInfo info={styleInfo}/>
+          </Row>
+          <Row>
+            <StyleSelector />
+          </Row>
+          <Row>
+            <AddToCart />
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

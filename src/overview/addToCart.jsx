@@ -8,7 +8,17 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div>AddToCart in the House!</div>
+      <div>
+        4 nicely formatted buttons here
+        <div>
+          <span>SELECT SIZE DROPDOWN</span>
+          <span>SELECT QUANTITY DROPDOWN</span>
+        </div>
+        <div>
+          <span>ADD TO CART BUTTON</span>
+          <span>FAVORITE THIS ITEM BUTTOM</span>
+        </div>
+      </div>
     );
   }
 }
