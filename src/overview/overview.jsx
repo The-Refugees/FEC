@@ -55,7 +55,7 @@ function Overview (props) {
         <Col >
           <Gallery photos={styleInfo.photos}/>
         </Col>
-        <Col sm={3} md={3} lg={3}>
+        <Col>
           <Row>
             <ProductInfo product={props.product} info={styleInfo} rating={[ratingTotal, ratingAvg]}/>
           </Row>

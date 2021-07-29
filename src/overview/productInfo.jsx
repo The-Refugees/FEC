@@ -19,7 +19,7 @@ var ProductInfo = (props) =>{
         <span>Star Rating Component = {props.rating[1].toFixed(1)}</span>
         <Button variant="link" href="#ratingsreviews">Read all {props.rating[0]} reviews</Button>
       </div>
-      <div> {props.product.category}</div>
+      <div> <b>CATEGORY</b> > {props.product.category.toUpperCase()}</div>
       <h3>{props.product.name}</h3>
       <div>{currentPrice()}</div>
       <span id="fbbutton">
