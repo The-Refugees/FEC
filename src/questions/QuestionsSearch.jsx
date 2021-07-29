@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 function QuestionsSearch() {
   return (
     <div id="searchBar">
-      <input placeholder="What would you like to know?"/>
+      <input placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
     </div>
   )
 }
