@@ -7,7 +7,7 @@ function QuestionsSearch() {
   return (
     <Card id="searchBar">
       <Row>
-      <input placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."/>
+      <input placeholder="Have a question? Search for answers..."/>
       </Row>
     </Card>
   )
