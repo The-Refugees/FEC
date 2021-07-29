@@ -25,8 +25,8 @@ function QuestionsList(props) {
             {!props.loading &&
             <Container>
 
-                {props.data.map((item) => (
-                  <Row>{item.question_body}</Row>
+                {props.data.map((item, i) => (
+                  <Row key={i}>{item.question_body}</Row>
                 ))}
 
             </Container>

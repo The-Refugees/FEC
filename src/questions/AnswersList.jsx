@@ -32,8 +32,8 @@ function AnswersList(props) {
             {!props.loading &&
             <Container>
 
-                {currQuestionAnswers.map((item) => (
-                  <Row>
+                {currQuestionAnswers.map((item, i) => (
+                  <Row key={i}>
                     <Row>{item.body}</Row>
                     <Row>{'by: ' + item.answerer_name + ', ' + item.date}</Row>
                   </Row>
