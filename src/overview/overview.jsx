@@ -13,7 +13,7 @@ import Col from 'react-bootstrap/Col';
 
 function Overview (props) {
 
-  const [styleInfo, setStyle] = useState({photos: [], sale_price: null});
+  const [[styleInfo,styleList], setStyle] = useState([{photos: [], sale_price: null}, []]);
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
 
   const solid = 0;
@@ -23,9 +23,10 @@ function Overview (props) {
     .then( (response) => {
       for (var i of response.data.results ) {
         if(i['default?']) {
-          setStyle(i);
+          setStyle([i, response.data.results]);
           break;
         }
+
       }
     })
     .catch( (err) => {
@@ -60,7 +61,7 @@ function Overview (props) {
             <ProductInfo product={props.product} info={styleInfo} rating={[ratingTotal, ratingAvg]}/>
           </Row>
           <Row>
-            <StyleSelector />
+            <StyleSelector info={[styleInfo, styleList]}/>
           </Row>
           <Row>
             <AddToCart info={styleInfo}/>
