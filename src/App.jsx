@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello World</h1>
-        <Overview product={data[2]}/>
+        <Overview product={data[0]}/>
         <QandA/>
         <RatingsReviews />
       </div>

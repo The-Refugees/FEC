@@ -13,7 +13,7 @@ import Col from 'react-bootstrap/Col';
 
 function Overview (props) {
 
-  const [styleInfo, setStyle] = useState({photos: []});
+  const [styleInfo, setStyle] = useState({photos: [], sale_price: null});
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
 
   const solid = 0;
@@ -41,8 +41,6 @@ function Overview (props) {
         avg += Number(key)*Number(response.data.ratings[key]);
       }
       avg=avg/total;
-      console.log('This is the total ' + total);
-      console.log('This is the avg ' + avg);
       setRating([total, avg]);
     })
     .catch( (err) => {
