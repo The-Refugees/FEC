@@ -5,6 +5,10 @@ import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import axios from 'axios';
 import AUTH_TOKEN from '../config.js';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 
 function Overview (props) {
@@ -12,10 +16,10 @@ function Overview (props) {
   const [styleInfo, setStyle] = useState({photos: []});
   const solid = 0;
   useEffect ( () => {
-    var productID = props.product.product_id;
+    var productID = props.product.id;
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productID}/styles?product_id=${productID}`, {headers: {Authorization: AUTH_TOKEN }})
-    .then( (results) => {
-      for (var i of results.data.results ) {
+    .then( (response) => {
+      for (var i of response.data.results ) {
         if(i['default?']) {
           setStyle(i);
           break;
@@ -25,17 +29,40 @@ function Overview (props) {
     .catch( (err) => {
       console.log('Houston we have this problem: ' + err);
     });
-
   }, [solid]);
 
 
   return (
-    <div>Overview in the House!
-      <Gallery photos={styleInfo.photos}/>
-      <ProductInfo />
-      <StyleSelector />
-      <AddToCart />
-    </div>
+    <Container fluid>
+      <Row sm={2} md={2} lg={2}>
+        <Col >
+          <Gallery photos={styleInfo.photos}/>
+        </Col>
+        <Col sm={3} md={3} lg={3}>
+          <Row>
+            <ProductInfo product={props.product} info={styleInfo}/>
+          </Row>
+          <Row>
+            <StyleSelector />
+          </Row>
+          <Row>
+            <AddToCart info={styleInfo}/>
+          </Row>
+        </Col>
+      </Row>
+      <Row sm={2} md={2} lg={2}>
+        <Col>
+          <div> {props.product.slogan} </div>
+          <p>{props.product.description}</p>
+        </Col>
+        <Col>
+          <div>100% Egyptian Silk</div>
+          <div>Vegan</div>
+          <div>GMO and Pesticide Free</div>
+        </Col>
+
+      </Row>
+    </Container>
   );
 };
 
