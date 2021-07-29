@@ -18,8 +18,11 @@ function Question(props) {
       <Card>
         <Card.Body>
           { 'Q: ' + props.q}
-          {Object.keys(props.a).map((key) => (
-            <Row>{'A: ' + key.body}</Row>
+
+          {Object.keys(props.a).map((key, i) => (
+         
+            <Row key={i}>{'A: ' + props.a[key].body}</Row>
+
           ))}
         </Card.Body>
 

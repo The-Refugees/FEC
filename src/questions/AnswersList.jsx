@@ -24,7 +24,7 @@ function AnswersList(props) {
     <div id="answerList">
       {console.log(currQuestionAnswers)}
       <Answer data={props.data} loading={props.loading}/>
-      <Accordion defaultActiveKey="0" flush>
+      <Accordion >
         <Accordion.Item eventKey="0">
           <Accordion.Header>See More Answers</Accordion.Header>
           <Accordion.Body>
