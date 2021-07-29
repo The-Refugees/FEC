@@ -28,7 +28,7 @@ function QuestionForm(props) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Submit a Question</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form>

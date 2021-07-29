@@ -9,17 +9,6 @@ import Question from './Question.jsx';
 
 function AnswersList(props) {
 
-  var currQuestionAnswers = [];
-  var getAnswers = function() {
-    if (!props.loading) {
-      for (var key in props.data[0].answers) {
-        currQuestionAnswers.push(props.data[0].answers[key])
-      }
-    }
-  }
-  getAnswers()
-
-
   return (
     <div id="answerList">
       {console.log(currQuestionAnswers)}
@@ -31,12 +20,7 @@ function AnswersList(props) {
             {!props.loading &&
             <Container>
 
-                {currQuestionAnswers.map((item, i) => (
-                  <Row key={i}>
-                    <Row>{item.body}</Row>
-                    <Row>{'by: ' + item.answerer_name + ', ' + item.date}</Row>
-                  </Row>
-                ))}
+              
 
             </Container>
             }

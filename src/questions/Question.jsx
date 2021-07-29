@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {Accordion, Card} from 'react-bootstrap';
+import {dateParser} from '../reviews/helpers.js'
 
 function Question(props) {
   // console.log(props.data)
@@ -14,39 +15,36 @@ function Question(props) {
 
   return (
     <div id="question">
+      { 'Q: ' + props.q}
       {!props.loading &&
-      <Card>
-        <Card.Body>
-          { 'Q: ' + props.q}
 
-          {Object.keys(props.a).map((key, i) => (
-         
-            <Row key={i}>{'A: ' + props.a[key].body}</Row>
+            <Accordion >
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>See More Answers</Accordion.Header>
+              <Accordion.Body>
+                {!props.loading &&
+                <Container>
+                 <Card>
+                   <Card.Body>
 
-          ))}
-        </Card.Body>
-
-        {/* <Row>
-          <Col>{'Q: ' + props.data[0].question_body} <button>add answer</button>
-            <Col>{'A: ' + props.data[0].answers['1719418'].body}</Col>
-            <Col>{ 'A: ' + props.data[0].answers['1719580'].body}</Col>
-            <AnswersList data={props.data} loading={props.loading} />
-            <AnswerForm/>
-          </Col>
-        </Row>
-        <Row>
-        <Col>{props.data[1].question_body} <button>add answer</button>
-          <Col>{'A: ' + props.data[1].answers['1719689'].body}</Col>
-          <Col>{ 'A: ' + props.data[1].answers['1719702'].body}</Col>
-          <AnswersList data={props.data} loading={props.loading}/>
-          <AnswerForm/>
-        </Col>
-        </Row> */}
-
-      </Card>
+                     {Object.keys(props.a).map((key, i) => (
+                       <Card>
+                         <Row key={i}>{'A: ' + props.a[key].body}</Row>
+                         <Row>{'by ' + props.a[key].answerer_name + ' ' + dateParser(props.a[key].date)}</Row>
+                       </Card>
+                      ))}
+                   </Card.Body>
+                 </Card>
+                </Container>
+                }
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
       }
     </div>
   )
 }
 
 export default Question;
+
+

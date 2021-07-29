@@ -18,12 +18,6 @@ function QuestionsList(props) {
     <div id="questionList">
         {!props.loading &&
           <Container>
-            <Row>
-                <Col>{'Q:' + props.data[0].question_body}</Col>
-            </Row>
-            <Row>
-            <Col>{'Q:' + props.data[1].question_body}</Col>
-            </Row>
             {props.data.map((item, i) => (
 
               <Question key={i} q={item.question_body} a={item.answers} data={props.data} loading={props.loading}/>
