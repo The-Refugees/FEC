@@ -1,26 +1,43 @@
 import React from 'react';
 import Ratings from './Ratings.jsx';
 import Reviews from './Reviews.jsx';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Button} from 'react-bootstrap';
+import {reviews, ratings} from './reviewsData.js';
 
 
 const RatingsReviews = (props) => {
 
+  let [newReviewClicked, newReviewClickedSet] = React.useState(false);
 
+  let reviewsCount = Object.values(ratings.ratings).reduce((acc, val) => acc + Number(val), 0);
 
   return (
     <Container id="ratingsreviews">
       <Row>
-        <h2>Ratings and Reviews</h2>
+        <h3>Ratings and Reviews</h3>
       </Row>
-      <Row>
-        <Col md={6}>
-          <Ratings />
+      <Row className="justify-content-start">
+
+        <Col sm={4}>
+          <Ratings ratings={ratings} reviewsCount={reviewsCount}/>
+          <Row>
+            <Col sm={10}>
+              <Button variant="light" style={{backgroundColor: 'rgb(189, 228, 255)'}}>More Reviews</Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={10}>
+             <Button variant="light" style={{backgroundColor: 'rgb(140, 206, 250)'}}>Write New Review</Button>
+            </Col>
+          </Row>
         </Col>
-        <Col md={6}>
-          <Reviews />
+
+        <Col sm={8}>
+          <Reviews reviews={reviews} reviewsCount={reviewsCount} newReviewClicked={newReviewClicked}/>
         </Col>
+
       </Row>
+
     </Container>
   )
 }
