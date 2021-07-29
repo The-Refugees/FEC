@@ -4,19 +4,17 @@ import {Accordion, Card} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Question from './Question.jsx';
 
 
 function AnswersList(props) {
 
-  // iterate over the answers object and add each answer to an array
-  // labled currQuestionAnswers
   var currQuestionAnswers = [];
   var getAnswers = function() {
     if (!props.loading) {
       for (var key in props.data[0].answers) {
         currQuestionAnswers.push(props.data[0].answers[key])
       }
-      console.log(currQuestionAnswers)
     }
   }
   getAnswers()
@@ -24,6 +22,7 @@ function AnswersList(props) {
 
   return (
     <div id="answerList">
+      {console.log(currQuestionAnswers)}
       <Answer data={props.data} loading={props.loading}/>
       <Accordion defaultActiveKey="0" flush>
         <Accordion.Item eventKey="0">
