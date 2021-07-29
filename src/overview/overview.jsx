@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
+
 function Overview (props) {
 
   const [styleInfo, setStyle] = useState({photos: []});
