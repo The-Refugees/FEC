@@ -11,7 +11,7 @@ function Question(props) {
   // console.log(props.data)
   // look at the option of importing the currQuestionAnswers here and using it
   // instead of hardcoding the first 2 qnswers
-  console.log(props.a)
+
 
   return (
     <div id="question">
@@ -28,9 +28,9 @@ function Question(props) {
                    <Card.Body>
 
                      {Object.keys(props.a).map((key, i) => (
-                       <Card>
-                         <Row key={i}>{'A: ' + props.a[key].body}</Row>
-                         <Row>{'by ' + props.a[key].answerer_name + ' ' + dateParser(props.a[key].date)}</Row>
+                       <Card key={i}>
+                         <Row >{'A: ' + props.a[key].body}</Row>
+                         <Row >{'by ' + props.a[key].answerer_name + ' ' + dateParser(props.a[key].date)}</Row>
                        </Card>
                       ))}
                    </Card.Body>
