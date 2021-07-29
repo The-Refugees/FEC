@@ -1,16 +1,23 @@
 import React from 'react';
-import ReviewTile from './review_list/ReviewTile.jsx';
+import ReviewTile from './ReviewTile.jsx';
+import { Row } from 'react-bootstrap';
 
 
 const ReviewList = (props) => {
 
   // map the review list into individual review tiles
+  let {reviews} = props;
 
   return (
-    <div id="review-list">
-      --Review List--
-      <ReviewTile />
-    </div>
+
+    <Row id="review-list">
+      {reviews.map((review) => {
+        return (
+          <ReviewTile key={review.review_id} review={review} />
+        );
+      })}
+    </Row>
+
   )
 }
 
