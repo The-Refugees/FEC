@@ -30,7 +30,7 @@ function QandA(props) {
 
   return (
     <div>
-      <h3>QUESTIONS AND ANSWERS</h3>
+      <h3>Questions and Answers</h3>
       <QuestionsSearch/>
       <QuestionsList data={questions.results} loading={loading}/>
       <QuestionForm/>

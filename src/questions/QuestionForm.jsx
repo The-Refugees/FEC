@@ -1,41 +1,62 @@
 import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Form';
+import Modal from 'react-bootstrap/Modal';
+import ModalHeader from 'react-bootstrap/ModalHeader';
+import ModalTitle from 'react-bootstrap/ModalTitle';
+import ModalBody from 'react-bootstrap/ModalBody';
+import ModalFooter from 'react-bootstrap/ModalFooter';
+import Button from 'react-bootstrap/ModalFooter'
+
 
 function QuestionForm(props) {
 
-  var renderForm = function() {
-    console.log('called')
-    return (
-      <>
-  <Form>
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-      <Form.Label>Email address</Form.Label>
-      <Form.Control type="email" placeholder="Enter email" />
-      <Form.Text className="text-muted">
-        We'll never share your email with anyone else.
-      </Form.Text>
-    </Form.Group>
+  const [show, setShow] = useState(false);
 
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-      <Form.Label>Password</Form.Label>
-      <Form.Control type="password" placeholder="Password" />
-    </Form.Group>
-    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-      <Form.Check type="checkbox" label="Check me out" />
-    </Form.Group>
-    <Button variant="primary" type="submit">Submit</Button>
-  </Form>
-      </>
-    )
-  }
-
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
-    <div id="form">
-      <button onClick={renderForm}>ADD A QUESTION +</button>
-    </div>
-  )
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Add a Question +
+      </Button>
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Submit a Question</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Form>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Whats your Question?</Form.Label>
+            <Form.Control type="text" placeholder="Your question here..." />
+          </Form.Group>
+          <Form.Group className="mb-3" >
+            <Form.Label>PLease enter your nickname</Form.Label>
+            <Form.Control type="text" placeholder="Nickname" />
+          </Form.Group>
+          <Form.Group className="mb-3" >
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="text" placeholder="Enter email"/>
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+        </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" type="submit" onClick={handleClose}>
+            Submit
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
 
 export default QuestionForm;
