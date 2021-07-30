@@ -18,7 +18,7 @@ const Ratings = (props) => {
         <Col sm={3} style={{fontSize: "xxl"}}>
           {rating}
         </Col>
-        <AvgStarRating rating={3.5} />
+        <AvgStarRating rating={rating} />
       </Row>
 
       <SummaryRec />

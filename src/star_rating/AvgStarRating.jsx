@@ -56,7 +56,6 @@ const AvgStarRating = (props) => {
       stars.push(starEmpty);
     }
   }
-  console.log(stars);
 
   return (
     <Row>
