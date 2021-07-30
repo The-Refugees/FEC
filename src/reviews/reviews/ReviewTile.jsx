@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { dateParser } from '../helpers.js';
 
-
 const ReviewTile = (props) => {
 
   let {review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photos} = props.review;
