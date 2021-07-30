@@ -16,24 +16,15 @@ function QuestionsList(props) {
 
   return (
     <div id="questionList">
-      <h2>I am a list of questions</h2>
-      <Question data={props.data} loading={props.loading}/>
-      <Accordion defaultActiveKey="0" flush>
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>See More Questions</Accordion.Header>
-          <Accordion.Body>
-            {!props.loading &&
-            <Container>
+        {!props.loading &&
+          <Container>
+            {props.data.map((item, i) => (
 
-                {props.data.map((item, i) => (
-                  <Row key={i}>{item.question_body}</Row>
-                ))}
+              <Question key={i} q={item.question_body} a={item.answers} data={props.data} loading={props.loading}/>
 
+            ))}
             </Container>
             }
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
     </div>
   )
 }

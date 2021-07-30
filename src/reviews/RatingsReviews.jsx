@@ -7,7 +7,7 @@ import {reviews, ratings} from './reviewsData.js';
 
 const RatingsReviews = (props) => {
 
-  let [newReviewClicked, newReviewClickedSet] = React.useState(false);
+  let [newReviewClicked, newReviewClickedSet] = React.useState(true);
 
   let reviewsCount = Object.values(ratings.ratings).reduce((acc, val) => acc + Number(val), 0);
 
@@ -18,7 +18,7 @@ const RatingsReviews = (props) => {
       </Row>
       <Row className="justify-content-start">
 
-        <Col sm={4}>
+        <Col sm={4} id="ratings">
           <Ratings ratings={ratings} reviewsCount={reviewsCount}/>
           <Row>
             <Col sm={10}>
