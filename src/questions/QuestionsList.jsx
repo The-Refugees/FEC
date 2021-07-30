@@ -21,8 +21,7 @@ function QuestionsList(props) {
             {props.data.map((item, i) => (
 
               <Question key={i} q={item.question_body} a={item.answers} data={props.data} loading={props.loading}/>
-              // here we nned to map over the answers and
-              // put them in an accordion as well
+
             ))}
             </Container>
             }

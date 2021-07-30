@@ -8,10 +8,6 @@ import {Accordion, Card} from 'react-bootstrap';
 import {dateParser} from '../reviews/helpers.js'
 
 function Question(props) {
-  // console.log(props.data)
-  // look at the option of importing the currQuestionAnswers here and using it
-  // instead of hardcoding the first 2 qnswers
-
 
   return (
     <div id="question">
