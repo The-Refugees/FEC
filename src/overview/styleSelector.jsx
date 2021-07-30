@@ -29,10 +29,10 @@ var StyleSelector =(props) => {
     var numRows = new Array(Math.ceil(list.length/4)).fill(0);
     return numRows.map( (row, i) => {
       return (
-        <Row key={i} className="justify-content-start">
-          {list.slice(i*4,i*4+4).map( (style)=>{
+        <Row key={'row' + i} className="justify-content-start">
+          {list.slice(i*4,i*4+4).map( (style, k)=>{
             return (
-              <Col key={style.id} md={3} name={selected(style.name)}>
+              <Col key={'col' + k} md={3} name={selected(style.name)}>
                 <Image src={style.photos[0].thumbnail_url} thumbnail name={style.name} onClick={clickHandler} />
               </Col>
             );

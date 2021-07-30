@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-//import AUTH_TOKEN from '../config.js';
+import AUTH_TOKEN from '../config.js';
 
 var ProductInfo = (props) =>{
 
