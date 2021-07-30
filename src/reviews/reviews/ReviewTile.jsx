@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { dateParser } from '../helpers.js';
+import { dateParser } from '../../../shared/helpers.js';
 
 const ReviewTile = (props) => {
 

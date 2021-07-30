@@ -2,8 +2,8 @@ import React from 'react';
 import SummaryRec from './ratings/SummaryRec.jsx'
 import RatingBreakdown from './ratings/RatingBreakdown.jsx';
 import ProductBreakdown from './ratings/ProductBreakdown.jsx';
-import {avgRating} from './helpers.js';
-import AvgStarRating from '../star_rating/AvgStarRating.jsx';
+import {avgRating} from '../../shared/helpers.js';
+import AvgStarRating from '../../shared/AvgStarRating.jsx';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
