@@ -14,23 +14,23 @@ const AvgStarRating = (props) => {
     return null
   };
   let starFull = {
-    path: '../src/star_rating/star_img/Star_Full.png',
+    path: '../lib/img/Star_Full.png',
     alt: 'image of a fully filled-in star'
   };
   let star75 = {
-    path: '../src/star_rating/star_img/Star75.png',
+    path: '../lib/img/Star75.png',
     alt: 'image of a 75 percent filled-in star'
   };
   let starHalf = {
-    path: '../src/star_rating/star_img/Star_Half.png',
+    path: '../lib/img/Star_Half.png',
     alt: 'image of a half filled-in star'
   };
   let star25 = {
-    path: '../src/star_rating/star_img/Star25.png',
+    path: '../lib/img/Star25.png',
     alt: 'image of a 25 percent filled-in star'
   };
   let starEmpty = {
-    path: '../src/star_rating/star_img/Star_Empty.png',
+    path: '../lib/img/StarEmpty.png',
     alt: 'image of an empty star'
   };
 
@@ -56,7 +56,6 @@ const AvgStarRating = (props) => {
       stars.push(starEmpty);
     }
   }
-
 
   return (
     <Row>

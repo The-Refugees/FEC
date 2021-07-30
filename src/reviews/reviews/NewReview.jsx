@@ -2,7 +2,7 @@ import React from 'react';
 import BodyInfo from './write_review/BodyInfo.jsx';
 import RatingsChars from './write_review/RatingsChars.jsx';
 import MediaUpload from './write_review/MediaUpload.jsx';
-import StarRating from '../../star_rating/StarRating.jsx';
+import StarRating from '../../../shared/StarRating.jsx';
 import { Row } from 'react-bootstrap';
 
 

@@ -20,10 +20,12 @@ const avgRating = (ratings) => {
   let s1 = Number(ratings.ratings[1]);
   let totalRatings = s5 + s4+ s3 + s2 + s1;
 
-  return (((5 * s5) + (4 * s4) + (3 * s3) + (2 * s2) + s1) / totalRatings).toFixed(1);
+  let avg = (((5 * s5) + (4 * s4) + (3 * s3) + (2 * s2) + s1) / totalRatings);
+
+  let rounded = (Math.round(avg * 10) / 10).toFixed(1);
+
+  return rounded;
 }
-
-
 
 
 export {dateParser, avgRating};

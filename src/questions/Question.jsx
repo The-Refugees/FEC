@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {Accordion, Card} from 'react-bootstrap';
-import {dateParser} from '../reviews/helpers.js'
+import {dateParser} from '../../shared/helpers.js'
 
 function Question(props) {
 
