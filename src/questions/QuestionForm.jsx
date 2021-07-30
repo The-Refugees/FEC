@@ -5,7 +5,7 @@ import ModalHeader from 'react-bootstrap/ModalHeader';
 import ModalTitle from 'react-bootstrap/ModalTitle';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalFooter from 'react-bootstrap/ModalFooter';
-import Button from 'react-bootstrap/ModalFooter'
+import Button from 'react-bootstrap/ModalFooter';
 
 
 function QuestionForm(props) {
