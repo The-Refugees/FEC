@@ -4,7 +4,7 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import axios from 'axios';
-import AUTH_TOKEN from '../config.js';
+//import AUTH_TOKEN from '../config.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -26,7 +26,6 @@ function Overview (props) {
           setStyle([i, response.data.results]);
           break;
         }
-
       }
     })
     .catch( (err) => {
@@ -49,9 +48,19 @@ function Overview (props) {
     });
   }, [solid]);
 
+  var updateStyle = (newStyle) => {
+    for (var i of styleList) {
+      if (i.name = newStyle) {
+        console.log('alright! here we go update the style', i);
+        var updateVal = [i, styleList];
+        break;
+      }
+    }
+    setStyle(updateVal);
+  }
 
   return (
-    <Container fluid>
+    <Container id="overview">
       <Row sm={2} md={2} lg={2}>
         <Col >
           <Gallery photos={styleInfo.photos}/>
@@ -61,7 +70,7 @@ function Overview (props) {
             <ProductInfo product={props.product} info={styleInfo} rating={[ratingTotal, ratingAvg]}/>
           </Row>
           <Row>
-            <StyleSelector info={[styleInfo, styleList]}/>
+            <StyleSelector info={[styleInfo.name, styleList]} styleUpdater={updateStyle}/>
           </Row>
           <Row>
             <AddToCart info={styleInfo}/>
