@@ -4,7 +4,7 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import axios from 'axios';
-import AUTH_TOKEN from '../config.js';
+//import AUTH_TOKEN from '../config.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,8 +12,8 @@ import Col from 'react-bootstrap/Col';
 
 
 function Overview (props) {
-
-  const [[styleInfo,styleList], setStyle] = useState([{photos: [], sale_price: null}, []]);
+  const [styleList,setStyleList] = useState([]);
+  const [styleInfo, setStyle] = useState({photos: [], sale_price: null});
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
 
   const solid = 0;
@@ -23,7 +23,8 @@ function Overview (props) {
     .then( (response) => {
       for (var i of response.data.results ) {
         if(i['default?']) {
-          setStyle([i, response.data.results]);
+          setStyle(i);
+          setStyleList(response.data.results);
           break;
         }
       }
@@ -50,13 +51,13 @@ function Overview (props) {
 
   var updateStyle = (newStyle) => {
     for (var i of styleList) {
-      if (i.name = newStyle) {
+      if (i.name === newStyle) {
         console.log('alright! here we go update the style', i);
-        var updateVal = [i, styleList];
+        //var updateVal = ;
+        setStyle(i);
         break;
       }
     }
-    setStyle(updateVal);
   }
 
   return (
