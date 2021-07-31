@@ -13,7 +13,7 @@ import Col from 'react-bootstrap/Col';
 
 function Overview (props) {
   const [styleList,setStyleList] = useState([]);
-  const [styleInfo, setStyle] = useState({photos: [], sale_price: null});
+  const [styleInfo, setStyle] = useState({photos: [], sale_price: null, skus: {}});
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
 
   const solid = 0;
@@ -52,7 +52,7 @@ function Overview (props) {
   var updateStyle = (newStyle) => {
     for (var i of styleList) {
       if (i.name === newStyle) {
-        console.log('alright! here we go update the style', i);
+        //console.log('alright! here we go update the style', i);
         //var updateVal = ;
         setStyle(i);
         break;
@@ -88,7 +88,6 @@ function Overview (props) {
           <div>Vegan</div>
           <div>GMO and Pesticide Free</div>
         </Col>
-
       </Row>
     </Container>
   );
