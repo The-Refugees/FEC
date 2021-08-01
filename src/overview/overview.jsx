@@ -47,6 +47,8 @@ function Overview (props) {
     .catch( (err) => {
       console.log('cant calculate review total: ' + err);
     });
+
+
   }, [solid]);
 
   var updateStyle = (newStyle) => {
