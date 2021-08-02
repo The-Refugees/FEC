@@ -4,7 +4,7 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import axios from 'axios';
-//import AUTH_TOKEN from '../config.js';
+import AUTH_TOKEN from '../config.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -64,11 +64,11 @@ function Overview (props) {
 
   return (
     <Container id="overview">
-      <Row sm={2} md={2} lg={2}>
-        <Col >
+      <Row >
+        <Col sm={6} md={6} lg={5} xl={4}>
           <Gallery photos={styleInfo.photos}/>
         </Col>
-        <Col>
+        <Col sm={6} md={6} lg={6}>
           <Row>
             <ProductInfo product={props.product} info={styleInfo} rating={[ratingTotal, ratingAvg]}/>
           </Row>
@@ -80,7 +80,7 @@ function Overview (props) {
           </Row>
         </Col>
       </Row>
-      <Row sm={2} md={2} lg={2}>
+      <Row >
         <Col>
           <div> {props.product.slogan} </div>
           <p>{props.product.description}</p>

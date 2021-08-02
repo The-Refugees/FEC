@@ -13,20 +13,17 @@ var AddToCart = (props) => {
   const [activity, setActivity] = useState(true);
 
   var generateSizeList = () => {
-    console.log('this is the sku list: ', skuList);
+    //console.log('this is the sku list: ', skuList);
     quantityArray = [];
     for ( var i of skuList) {
-      console.log('this is the i: ', i);
+      //console.log('this is the i: ', i);
       if (props.info.skus[i].quantity > 0) {
-        console.log('am i making the list?');
+        //console.log('am i making the list?');
         sizeArray.push(props.info.skus[i].size);
         quantityArray.push(Math.min(props.info.skus[i].quantity,15));
       };
     }
-    if (sizeArray.length === 1){
-      //setActivity('disabled');
-    }
-    console.log('this is the sizearray', sizeArray);
+    //console.log('this is the sizearray', sizeArray);
     return sizeArray;
   }
   var generateQuantityList = (s) => {
@@ -50,10 +47,17 @@ var AddToCart = (props) => {
     }
   }
 
+  var quantityClickHandler = (e) =>{
+    e.preventDefault();
+    //console.log('size Selected please update the state');
+    setQuantityTitle(e.target.name.slice(4));
+  }
+
   var addToCartHandler = (e) =>{
     e.preventDefault();
     if (currentSize === "SELECT SIZE") {
-      document.getElementById("sizeDropDown").click();
+      document.getElementsByClassName("dropdown-toggle")[0].click()
+      //document.getElementById("sizeDropDown").click();
     } else {
       console.log('Add these to the cart')
       console.log('Style is ', props.info.name);
@@ -68,7 +72,7 @@ var AddToCart = (props) => {
     } else {
       setActivity(true);
     }
-  }, [sizeArray, skuList]) //i have an issue here
+  }, [sizeArray, skuList])
 
   var isActive = () => {
    if (!activity) {
@@ -96,7 +100,7 @@ var AddToCart = (props) => {
         <DropdownButton as={ButtonGroup} title={quantityTitle}>
         <Dropdown.Item as="button" active>1</Dropdown.Item>
         {generateQuantityList(currentSize).map( (quantity,i) => (
-          <Dropdown.Item key={i}>{i+1}</Dropdown.Item>))}
+          <Dropdown.Item onClick={quantityClickHandler} name={`qty_${i+1}`}key={i}>{i+1}</Dropdown.Item>))}
         </DropdownButton>
         <div>
           <ButtonGroup>
