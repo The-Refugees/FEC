@@ -12,8 +12,8 @@ import Col from 'react-bootstrap/Col';
 
 
 function Overview (props) {
-
-  const [[styleInfo,styleList], setStyle] = useState([{photos: [], sale_price: null}, []]);
+  const [styleList,setStyleList] = useState([]);
+  const [styleInfo, setStyle] = useState({photos: [], sale_price: null, skus: {}});
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
 
   const solid = 0;
@@ -23,7 +23,8 @@ function Overview (props) {
     .then( (response) => {
       for (var i of response.data.results ) {
         if(i['default?']) {
-          setStyle([i, response.data.results]);
+          setStyle(i);
+          setStyleList(response.data.results);
           break;
         }
       }
@@ -46,26 +47,28 @@ function Overview (props) {
     .catch( (err) => {
       console.log('cant calculate review total: ' + err);
     });
+
+
   }, [solid]);
 
   var updateStyle = (newStyle) => {
     for (var i of styleList) {
-      if (i.name = newStyle) {
-        console.log('alright! here we go update the style', i);
-        var updateVal = [i, styleList];
+      if (i.name === newStyle) {
+        //console.log('alright! here we go update the style', i);
+        //var updateVal = ;
+        setStyle(i);
         break;
       }
     }
-    setStyle(updateVal);
   }
 
   return (
     <Container id="overview">
-      <Row sm={2} md={2} lg={2}>
-        <Col >
+      <Row >
+        <Col sm={6} md={6} lg={5} xl={4}>
           <Gallery photos={styleInfo.photos}/>
         </Col>
-        <Col>
+        <Col sm={6} md={6} lg={6}>
           <Row>
             <ProductInfo product={props.product} info={styleInfo} rating={[ratingTotal, ratingAvg]}/>
           </Row>
@@ -77,7 +80,7 @@ function Overview (props) {
           </Row>
         </Col>
       </Row>
-      <Row sm={2} md={2} lg={2}>
+      <Row >
         <Col>
           <div> {props.product.slogan} </div>
           <p>{props.product.description}</p>
@@ -87,7 +90,6 @@ function Overview (props) {
           <div>Vegan</div>
           <div>GMO and Pesticide Free</div>
         </Col>
-
       </Row>
     </Container>
   );
