@@ -4,6 +4,7 @@ import QandA from './questions/QandA.jsx';
 import RatingsReviews from './reviews/RatingsReviews.jsx';
 import data from './overview/data.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 class App extends React.Component {
   constructor(props) {
