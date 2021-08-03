@@ -11,7 +11,12 @@ function QandA(props) {
 
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [update, updateQuestions] = useState([])
+  const [update, updateQuestions] = useState([]);
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [question_body, setQuestion] = useState('');
+  const [nickname, setNickname] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -27,26 +32,26 @@ function QandA(props) {
   }, []);
 
 
-  const article = {
-    body: 'chris',
-    name: 'chris',
-    email: 'chrisdwoodby@gmail.com',
-    product_id: 24156,
-    question_body: 'why no work :(',
-    answers: {}
-  }
   var getNew = function(event) {
     const headers = {
       'Authorization': AUTH_TOKEN
     }
+    const article = {
+      body: 'user',
+      name: nickname,
+      email: email,
+      product_id: 24156,
+      question_body: question_body,
+      answers: {}
+    }
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions', article, {headers})
-    .then((response, request) => {
+    .then((response) => {
 
       setQuestions(questions.concat(article))
       console.log(questions)
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error, article)
     })
   }
 
@@ -62,7 +67,7 @@ function QandA(props) {
       <QuestionsList data={questions} loading={loading} setQuestions={setQuestions}/>
       }
       {!loading &&
-      <QuestionForm data={questions} loading={loading} update={getNew} form={article}/>
+      <QuestionForm data={questions} loading={loading} update={getNew} setName={setName} setNickname={setNickname} setQuestion={setQuestion} setEmail={setEmail}/>
 
        }
     </Container>

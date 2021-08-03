@@ -23,11 +23,11 @@ inner()
 
 
   return (
-    <Container id="question">
+    <Container id="question" >
       { 'Q: ' + props.q}
       {first2.map((answer, i) => (
         <Container key={i}>
-          <Row >{'A: ' + answer.body}</Row>
+          <Row style={{padding: '12px', backgroundColor: "rgb(192,192,192)"}} >{'A: ' + answer.body}</Row>
           <Row >{'by ' + answer.answerer_name + ' ' + dateParser(answer.date) + '   ' + 'Helpful?'}</  Row>
         </Container>
       ))}
@@ -46,7 +46,7 @@ inner()
 
                      {Object.keys(props.a).map((key, i) => (
                        <Card key={i}>
-                         <Row >{'A: ' + props.a[key].body}</Row>
+                         <Row style={{padding: '12px', backgroundColor: "rgb(192,192,192)"}}>{'A: ' + props.a[key].body}</Row>
                          <Row >{'by ' + props.a[key].answerer_name + ' ' + dateParser(props.a[key].date)}</Row>
                        </Card>
                       ))}
