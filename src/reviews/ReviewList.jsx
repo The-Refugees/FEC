@@ -10,7 +10,7 @@ const ReviewList = (props) => {
 
   return (
 
-    <Row id="review-list">
+    <Row id="review-list" style={{height: "600px", overflow: "scroll"}} >
       {reviews.map((review) => {
         return (
           <ReviewTile key={review.review_id} review={review} />

@@ -4,6 +4,7 @@ import QuestionsList from './QuestionsList.jsx';
 import QuestionForm from './QuestionForm.jsx';
 import axios from 'axios';
 import AUTH_TOKEN from '../config.js';
+import Container from 'react-bootstrap/Container';
 
 
 function QandA(props) {
@@ -29,12 +30,12 @@ function QandA(props) {
 
 
   return (
-    <div>
+    <Container>
       <h3>Questions and Answers</h3>
       <QuestionsSearch/>
       <QuestionsList data={questions.results} loading={loading}/>
       <QuestionForm/>
-    </div>
+    </Container>
   )
 }
 

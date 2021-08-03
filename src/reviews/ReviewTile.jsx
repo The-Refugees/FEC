@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { dateParser } from '../../../shared/helpers.js';
+import { dateParser } from '../../shared/helpers.js';
+import AvgStarRating from '../../shared/AvgStarRating.jsx';
 
 const ReviewTile = (props) => {
 
@@ -12,8 +13,12 @@ const ReviewTile = (props) => {
       <Row>
         <Card.Header>
           <Row>
-            <Col sm={8}>Rating: {rating}</Col>
-            <Col sm={4}>{dateParser(date)}</Col>
+            <Col sm={5} md={4} lg={3}>
+              <AvgStarRating rating={rating} width="20px" height="20px" notPadded={true} />
+            </Col>
+            <Col sm={7} style={{textAlign: "right"}}>
+              {dateParser(date)}
+            </Col>
           </Row>
         </Card.Header>
       </Row>
@@ -28,6 +33,10 @@ const ReviewTile = (props) => {
           {body}
         </Card.Text>
 
+        <Card.Text>
+          <em>--{reviewer_name}</em>
+        </Card.Text>
+
         <ListGroup>
           {recommend &&
             <ListGroupItem style={{backgroundColor: "rgb(240, 255, 248)"}}>
@@ -39,7 +48,7 @@ const ReviewTile = (props) => {
 
           {response &&
             <ListGroupItem  style={{backgroundColor: "rgb(240, 250, 255)"}}>
-              <b>Response:</b> {response}
+              <b>Response from seller: </b> {response}
             </ListGroupItem>
           }
         </ListGroup>

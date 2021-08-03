@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 
 const AvgStarRating = (props) => {
 
-  let {rating} = props;
+  let {rating, width, height, notPadded} = props;
   if (rating > 5 ||
     rating < 1 ||
     rating === NaN ||
@@ -58,16 +58,20 @@ const AvgStarRating = (props) => {
   }
 
   return (
-    <Row>
+    <Row >
       {stars.map((star, index) => {
         return (
-          <Col sm={1} key={'star' + index}>
-            <img
-              src={star.path}
-              width="30px"
-              height="30px"
-              alt={star.alt}
-            />
+          <Col
+            sm={1}
+            key={'star' + index}
+            style={notPadded && {padding: "0px"}}
+          >
+              <img
+                src={star.path}
+                width={width || "30px"}
+                height={height || "30px"}
+                alt={star.alt}
+              />
           </Col>
         )
       })}
