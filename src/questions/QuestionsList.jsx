@@ -4,6 +4,7 @@ import {Accordion, Card} from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import QuestionForm from './QuestionForm.jsx';
 
 function QuestionsList(props) {
 
@@ -13,6 +14,11 @@ function QuestionsList(props) {
   //     after2(props.data[i])
   //   }
   // }, [after2]);
+
+
+  useEffect(() => {
+    // console.log('8/2/21', props.data)
+  }, [props.data])
 
   return (
     <div id="questionList">
