@@ -35,14 +35,16 @@ function RatingIcon(props) {
           className ="cursor-pointer"
           onMouseEnter={() => onMouseEnter(index)}
           onMouseLeave={() => onMouseLeave()}
-          onClick={() => onSaveRating(index)}>
+          onClick={() => {
+            onSaveRating(index);
+            }}>
           <StarIcon fill={fill} />
         </div>
       </Col>
   )
 }
 
-const StarRating = () => {
+const StarRating = (props) => {
   const [rating, setRating] = React.useState(0);
   const [hoverRating, setHoverRating] = React.useState(0);
   const onMouseEnter = (index) => {
@@ -53,10 +55,11 @@ const StarRating = () => {
   };
   const onSaveRating = (index) => {
     setRating(index);
+    props.setRating(index); 
   };
 
   return(
-      <Row sm="auto">
+      <Row sm="auto" value={rating}>
 
           {[1, 2, 3, 4, 5].map((index) => {
             return (
@@ -68,7 +71,8 @@ const StarRating = () => {
                   hoverRating={hoverRating}
                   onMouseEnter={onMouseEnter}
                   onMouseLeave={onMouseLeave}
-                  onSaveRating={onSaveRating} />
+                  onSaveRating={onSaveRating}
+                />
 
             )
           })}
