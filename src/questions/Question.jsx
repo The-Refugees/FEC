@@ -6,10 +6,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {Accordion, Card} from 'react-bootstrap';
 import {dateParser} from '../../shared/helpers.js'
-import Button from 'react-bootstrap/ModalFooter'
+import Button from 'react-bootstrap/ModalFooter';
+import QuestionForm from './QuestionForm.jsx';
 
 function Question(props) {
-
   var first2 = [];
   var inner = function() {
   Object.keys(props.a).map((key, i) => {
@@ -21,10 +21,9 @@ function Question(props) {
 }
 inner()
 
-console.log(first2)
 
   return (
-    <div id="question">
+    <Container id="question">
       { 'Q: ' + props.q}
       {first2.map((answer, i) => (
         <Container key={i}>
@@ -59,7 +58,7 @@ console.log(first2)
             </Accordion.Item>
           </Accordion>
       }
-    </div>
+    </Container>
   )
 }
 
