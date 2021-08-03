@@ -12,7 +12,7 @@ var StyleSelector =(props) => {
 
   var clickHandler = (e) => {
     e.preventDefault();
-    console.log('Click!');
+    //console.log('Click!');
     props.styleUpdater(e.target.name);
   }
 
@@ -45,7 +45,6 @@ var StyleSelector =(props) => {
     <div>
       <div><b>STYLE</b> > {currentStyle}</div>
       {grid()}
-      <div></div>
     </div>
   );
 }

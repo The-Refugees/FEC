@@ -65,7 +65,6 @@ function QandA(props) {
       <QuestionForm data={questions} loading={loading} update={getNew} form={article}/>
 
        }
-
     </Container>
   )
 }
