@@ -18,12 +18,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3000/products`)
+    axios.get(`http://localhost:3001/products`)
     .then( (response) => {
-      this.setState({productList: response.data});
+      console.log('updating app state :)')
+      this.setState({
+        productList: response.data,
+        currentProduct: response.data[0]
+      });
     })
     .catch( (err) => {
-      console.log(err);
+      console.log('Error on app get request. ', err);
     });
   }
 

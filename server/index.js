@@ -6,7 +6,7 @@ const fsPromise = require('fs/promises');
 var AUTH_TOKEN = require('./config.js');
 
 var app = express();
-var port = 3000;
+var port = 3001;
 
 app.use(express.json());
 console.log(__dirname + '/../dist')
@@ -30,32 +30,35 @@ app.get('/overview/:productID', (req, res)=> {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${req.params.productID}/styles?product_id=${req.params.productID}`, {headers: {Authorization: AUTH_TOKEN }})
   .then( (response) => {
     for (var i of response.data.results ) {
-      if(i['default?']) {
+      styleList = response.data.results;
+      if (i['default?']) {
         style = i;
-        i.photos.map((photoObj, k) => {
-          //console.log("and the photo is ", photoObj.thumbnail_url);
-          fsPromise.writeFile(`${__dirname}/imageData/${k}-small.jpg`, photoObj.thumbnail_url)
-          .catch(()=>console.log('error making file'))
-          .then( (result) => {
-            axios({ url: photoObj.thumbnail_url, responseType: "arraybuffer" })
-            .then( (res) => {
-              sharp(res.data)
-              .resize(100,150, {fit: 'contain'})
-              .toFile(`${__dirname}/imageData/${k}-small.jpg`)
-              .catch( (err)=>{console.log("No Sharp isnt working", err)});
-            })
-          })
-          .then(()=> {
-            fsPromise.readFile(`${__dirname}/imageData/${k}-small.jpg`)
-            .then((result)=>{
-              photoObj.thumbnail_url=result;
-              console.log('what is this ', style.photos.thumbnail_url);
-            })
-            .catch(()=>console.log('I cant read the file I just wrote'));
-          })
-        })
-        styleList = response.data.results;
-        break;
+        return ;
+        // return Promise.all(i.photos.map((photoObj, k) => {
+        //   //console.log("and the photo is ", photoObj.thumbnail_url);
+        //   if (photoObj.url === null) {
+        //     return '';
+        //   } else {
+            // return fsPromise.writeFile(`${__dirname}/../dist/lib/img/${k}-big.png`, photoObj.url)
+            // .then (() => fsPromise.writeFile(`${__dirname}/../dist/lib/img/${k}-small.png`, photoObj.thumbnail_url))
+            // .catch((err)=>console.log('error making files'))
+            // .then(() => {return axios({ url: photoObj.url, responseType: "arraybuffer" });})
+            // .then( (res) => {
+            //   return sharp(res.data).resize(400,600, {fit: 'contain'})
+            //     .toFile(`${__dirname}/../dist/lib/img/${k}-big.png`).catch( (err)=>console.log("Error Writing Large URLs", err)).then(()=>{console.log('wtf man')});
+            // })
+            // .then( ()=>{return axios({ url: photoObj.thumbnail_url, responseType: "arraybuffer" });})
+            // .then( (res) => {
+            //   return sharp(res.data).resize(100,150, {fit: 'contain'})
+            //     .toFile(`${__dirname}/../dist/lib/img/${k}-small.png`).catch( (err)=>{console.log("Error Writing Small URLs", err)}).then(()=>{console.log('wtf man 2')});
+            // })
+            // .then(()=> {
+            //   photoObj.url=`./lib/img/${k}-big.png`
+            //   photoObj.thumbnail_url=`./lib/img/${k}-small.png`;
+            //   console.log('done the hard work');
+            // })
+        //   }
+        // }));
       }
     }
   })
@@ -73,12 +76,11 @@ app.get('/overview/:productID', (req, res)=> {
       rating=[total, avg];
     })
     .then( () => {
-      console.log('got here', style);
-
+      //console.log('got here', style);
       res.status(200).send({style, styleList, rating});
     })
     .catch( (err) => {
-      console.log('Error getting rating information', err);
+      //console.log('Error getting rating information', err);
       res.status(404).send('Error getting rating information');
     });
   })

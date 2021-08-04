@@ -13,13 +13,13 @@ import Col from 'react-bootstrap/Col';
 
 function Overview (props) {
   const [styleList,setStyleList] = useState([]);
-  const [styleInfo, setStyle] = useState({photos: [], sale_price: null, skus: {}});
+  const [styleInfo, setStyle] = useState({photos: [{url: './lib/img/defaultImg.jpg'}], sale_price: null, skus: {}});
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
 
 
   useEffect ( () => {
     var productID = props.product.id;
-    axios.get(`http://localhost:3000/overview/${productID}`)
+    axios.get(`http://localhost:3001/overview/${productID}`)
     .then( (response) => {
       console.log("setting the overview state :) ", response.data)
       setStyleList(response.data.styleList);
@@ -29,8 +29,6 @@ function Overview (props) {
     .catch( (err) => {
       console.log(err);
     });
-
-
   }, [props.product.id]);
 
   var updateStyle = (newStyle) => {
