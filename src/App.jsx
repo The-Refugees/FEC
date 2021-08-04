@@ -5,21 +5,21 @@ import RatingsReviews from './reviews/RatingsReviews.jsx';
 import data from './overview/data.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       term: '',
-      currentProductIndex: 0,
-      productList: [{id:24156, category: '', slogan: '', name: ''}]};
+      currentProduct: {id:24156, category: '', slogan: '', name: ''},
+      productList: [{id:24156, category: '', slogan: '', name: ''}]
+    };
   }
 
   componentDidMount() {
-    console.log("Hello bud what are we doing?");
-    axios.get(`http://localhost:3001/products`)
+    axios.get(`http://localhost:3000/products`)
     .then( (response) => {
-      console.log("setting the app state :) ", response.data)
       this.setState({productList: response.data});
     })
     .catch( (err) => {
@@ -29,13 +29,12 @@ class App extends React.Component {
 
   handleProductSubmit = (e) => {
     e.preventDefault();
-    console.log('is this the right thing: ', this.state.term);
-    this.setState({currentProductIndex: this.state.term, term: ''})
+    var newItem = this.state.productList.slice()[this.state.term];
+    this.setState({currentProduct: newItem})
   }
 
   inputHandler = (e) => {
     e.preventDefault();
-    console.log('is this the right thing: ', e.target.input);
     this.setState({term: e.target.value})
   }
 
@@ -45,12 +44,12 @@ class App extends React.Component {
         <h1 >Hello User! </h1>
         <form onSubmit={this.handleProductSubmit}>
           What index do you want to see?
-          <input type="text" name="productIndex" value={this.state.term} onChange={this.inputHandler}/>
+          <input type="number" name="productIndex" value={this.state.term} onChange={this.inputHandler}/>
           <button type="submit"  value="Get Product"/>
         </form>
-        <Overview product={this.state.productList[this.state.currentProductIndex]}/>
-        <QandA/>
-        <RatingsReviews />
+        <Overview product={this.state.currentProduct}/>
+        <QandA />
+        <RatingsReviews productId='24156' />
       </div>
     );
   };

@@ -4,7 +4,7 @@ import ProductInfo from './productInfo.jsx';
 import StyleSelector from './styleSelector.jsx';
 import AddToCart from './addToCart.jsx';
 import axios from 'axios';
-//import AUTH_TOKEN from '../config.js';
+import AUTH_TOKEN from '../config.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -16,38 +16,22 @@ function Overview (props) {
   const [styleInfo, setStyle] = useState({photos: [], sale_price: null, skus: {}});
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
 
-  const solid = 0;
+
   useEffect ( () => {
     var productID = props.product.id;
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productID}/styles?product_id=${productID}`, {headers: {Authorization: AUTH_TOKEN }})
+    axios.get(`http://localhost:3000/overview/${productID}`)
     .then( (response) => {
-      for (var i of response.data.results ) {
-        if(i['default?']) {
-          setStyle(i);
-          setStyleList(response.data.results);
-          break;
-        }
-      }
+      console.log("setting the overview state :) ", response.data)
+      setStyleList(response.data.styleList);
+      setStyle(response.data.style);
+      setRating(response.data.rating);
     })
     .catch( (err) => {
-      console.log('Houston we have this problem: ' + err);
+      console.log(err);
     });
 
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/meta?product_id=${productID}`, {headers: {Authorization: AUTH_TOKEN }})
-    .then( (response) => {
-      var total = 0;
-      var avg = 0;
-      for(var key in response.data.ratings) {
-        total += Number(response.data.ratings[key]);
-        avg += Number(key)*Number(response.data.ratings[key]);
-      }
-      avg=avg/total;
-      setRating([total, avg]);
-    })
-    .catch( (err) => {
-      console.log('cant calculate review total: ' + err);
-    });
-  }, [solid]);
+
+  }, [props.product.id]);
 
   var updateStyle = (newStyle) => {
     for (var i of styleList) {
@@ -62,11 +46,11 @@ function Overview (props) {
 
   return (
     <Container id="overview">
-      <Row sm={2} md={2} lg={2}>
-        <Col >
+      <Row >
+        <Col sm={6} md={6} lg={5} xl={4}>
           <Gallery photos={styleInfo.photos}/>
         </Col>
-        <Col>
+        <Col sm={6} md={6} lg={6}>
           <Row>
             <ProductInfo product={props.product} info={styleInfo} rating={[ratingTotal, ratingAvg]}/>
           </Row>
@@ -78,7 +62,7 @@ function Overview (props) {
           </Row>
         </Col>
       </Row>
-      <Row sm={2} md={2} lg={2}>
+      <Row >
         <Col>
           <div> {props.product.slogan} </div>
           <p>{props.product.description}</p>

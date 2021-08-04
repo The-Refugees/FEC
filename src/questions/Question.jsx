@@ -6,21 +6,42 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {Accordion, Card} from 'react-bootstrap';
 import {dateParser} from '../../shared/helpers.js'
+import Button from 'react-bootstrap/ModalFooter';
+import QuestionForm from './QuestionForm.jsx';
 
 function Question(props) {
+  var first2 = [];
+  var inner = function() {
+  Object.keys(props.a).map((key, i) => {
+    if (first2.length !== 2) {
+      first2.push(props.a[key])
+    }
+    return first2
+  })
+}
+inner()
+
 
   return (
-    <div id="question">
+    <Container id="question">
       { 'Q: ' + props.q}
+      {first2.map((answer, i) => (
+        <Container key={i}>
+          <Row >{'A: ' + answer.body}</Row>
+          <Row >{'by ' + answer.answerer_name + ' ' + dateParser(answer.date) + '   ' + 'Helpful?'}</  Row>
+        </Container>
+      ))}
+
       {!props.loading &&
 
             <Accordion >
             <Accordion.Item eventKey="0">
-              <Accordion.Header>See More Answers</Accordion.Header>
+              <Accordion.Header>Load More Answers</Accordion.Header>
               <Accordion.Body>
                 {!props.loading &&
                 <Container>
                  <Card>
+
                    <Card.Body>
 
                      {Object.keys(props.a).map((key, i) => (
@@ -37,7 +58,7 @@ function Question(props) {
             </Accordion.Item>
           </Accordion>
       }
-    </div>
+    </Container>
   )
 }
 
