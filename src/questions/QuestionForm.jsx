@@ -41,15 +41,17 @@ function QuestionForm(props) {
         </Modal.Header>
         <Modal.Body>
         <Form>
+
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Whats your Question?</Form.Label>
             <Form.Control type="text" placeholder="Your question here..." onChange={e => props.setQuestion(e.target.value)}/>
           </Form.Group>
+
           <Form.Group className="mb-3" >
             <Form.Label>PLease enter your nickname</Form.Label>
             <Form.Control type="text" placeholder="Nickname" onChange={e => props.setNickname(e.target.value)}/>
-
           </Form.Group>
+
           <Form.Group className="mb-3" >
             <Form.Label>Email address</Form.Label>
             <Form.Control type="text" placeholder="Enter email" onChange={e => props.setEmail(e.target.value)} />
@@ -57,12 +59,15 @@ function QuestionForm(props) {
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
+
         </Form>
         </Modal.Body>
         <Modal.Footer>
+
           <Button variant="primary" type="submit" onClick={handleSubmit} >
             Submit
           </Button>
+
         </Modal.Footer>
       </Modal>
     </>

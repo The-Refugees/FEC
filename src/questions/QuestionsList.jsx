@@ -15,22 +15,17 @@ function QuestionsList(props) {
   //   }
   // }, [after2]);
 
-
-  useEffect(() => {
-    // console.log('8/2/21', props.data)
-  }, [props.data])
-
   return (
     <div id="questionList">
         {!props.loading &&
           <Container>
             {props.data.map((item, i) => (
 
-              <Question key={i} q={item.question_body} a={item.answers} data={props.data} loading={props.loading}/>
+              <Question key={i} questions={item.question_body} answers={item.answers} data={props.data} loading={props.loading} postNewAnswers={props.postNewAnswers} setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail}/>
 
             ))}
-            </Container>
-            }
+          </Container>
+        }
     </div>
   )
 }

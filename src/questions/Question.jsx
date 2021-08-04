@@ -9,30 +9,39 @@ import {dateParser} from '../../shared/helpers.js'
 import Button from 'react-bootstrap/ModalFooter';
 import QuestionForm from './QuestionForm.jsx';
 
+
 function Question(props) {
-  var first2 = [];
+
+  var first2Answers = [];
+
   var getFirst2Answers = function() {
-  Object.keys(props.a).map((key, i) => {
-    if (first2.length !== 2) {
-      first2.push(props.a[key])
+  Object.keys(props.answers).map((key, i) => {
+    if (first2Answers.length !== 2) {
+      first2Answers.push(props.answers[key])
     }
-    for (var i = 0; i < first2.length; i++) {
-      for (var keys in props.a) {
-        if (props.a[key] === first2[i]) {
-          delete props.a[key]
+  })
+    for (var i = 0; i < first2Answers.length; i++) {
+      for (var keys in props.answers) {
+        if (props.answers[keys] === first2Answers[i] && first2Answers.length !== 0) {
+          delete props.answers[key]
         }
       }
     }
-    return first2
-  })
+    return first2Answers
+
 }
 getFirst2Answers()
 
 
   return (
     <Container id="question" >
-    <Card style={{padding: '10px', backgroundColor: "rgb(214,234,248)"}}>{ 'Q: ' + props.q}</Card>
-      {first2.map((answer, i) => (
+
+    <Card style={{padding: '10px', backgroundColor: "rgb(214,234,248)"}}>
+      { 'Q: ' + props.questions}
+      <AnswerForm postNewAnswers={props.postNewAnswers} setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail}/>
+    </Card>
+
+      {first2Answers.map((answer, i) => (
         <Container key={i}>
           <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}} >{'A: ' + answer.body}</Row>
           <Row >{'by ' + answer.answerer_name + ' ' + dateParser(answer.date) + '   ' + 'Helpful?'}</  Row>
@@ -43,23 +52,18 @@ getFirst2Answers()
 
             <Accordion >
             <Accordion.Item eventKey="0">
-
               <Accordion.Body>
                 {!props.loading &&
-                <Container>
+
                  <Card>
-
-                   <Card.Body>
-
-                     {Object.keys(props.a).map((key, i) => (
+                     {Object.keys(props.answers).map((key, i) => (
                        <Card key={i}>
-                         <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}}>{'A: ' + props.a[key].body}</Row>
-                         <Row >{'by ' + props.a[key].answerer_name + ' ' + dateParser(props.a[key].date)}</Row>
+                         <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}}>{'A: ' + props.answers[key].body}</Row>
+                         <Row >{'by ' + props.answers[key].answerer_name + ' ' + dateParser(props.answers[key].date)}</Row>
                        </Card>
                       ))}
-                   </Card.Body>
                  </Card>
-                </Container>
+
                 }
               </Accordion.Body>
               <Accordion.Header>Load More Answers</Accordion.Header>
