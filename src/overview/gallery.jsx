@@ -31,7 +31,7 @@ function Gallery (props) {
         onClick={fullScreenMode}
         //thumbnailPosition ="left"
         items={props.photos.map((photoObj)=>{
-        return {original: photoObj.thumbnail_url, thumbnail: photoObj.thumbnail_url, originalWidth: "400px", originalHeight: "600px", thumbnailHeight: "100px", thumbnailWidth: "150px"} //  thumbnailHeight: "50px", thumbnailWidth: "50px"
+        return {original: photoObj.thumbnail_url, thumbnail: photoObj.thumbnail_url, originalWidth: "500px", originalHeight: "700px", thumbnailHeight: "100px", thumbnailWidth: "150px"} //  thumbnailHeight: "50px", thumbnailWidth: "50px"
       })}/>
   );
 }

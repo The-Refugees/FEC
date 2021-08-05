@@ -13,17 +13,13 @@ var AddToCart = (props) => {
   const [activity, setActivity] = useState(true);
 
   var generateSizeList = () => {
-    //console.log('this is the sku list: ', skuList);
     quantityArray = [];
     for ( var i of skuList) {
-      //console.log('this is the i: ', i);
       if (props.info.skus[i].quantity > 0) {
-        //console.log('am i making the list?');
         sizeArray.push(props.info.skus[i].size);
         quantityArray.push(Math.min(props.info.skus[i].quantity,15));
       };
     }
-    //console.log('this is the sizearray', sizeArray);
     return sizeArray;
   }
   var generateQuantityList = (s) => {
@@ -32,12 +28,9 @@ var AddToCart = (props) => {
     } else {
        return new Array(quantityArray[sizeArray.indexOf(s)-1]).fill(0);
     }
-    //this.props.item.skus.somethingElse
-    //return quantityArray;
   }
   var sizeClickHandler = (e) =>{
     e.preventDefault();
-    //console.log('size Selected please update the state');
     if (e.target.name === "SELECT SIZE"){
       setCurrentSize(e.target.name);
       setQuantityTitle('-');
@@ -49,7 +42,6 @@ var AddToCart = (props) => {
 
   var quantityClickHandler = (e) =>{
     e.preventDefault();
-    //console.log('size Selected please update the state');
     setQuantityTitle(e.target.name.slice(4));
   }
 
@@ -57,7 +49,6 @@ var AddToCart = (props) => {
     e.preventDefault();
     if (currentSize === "SELECT SIZE") {
       document.getElementsByClassName("dropdown-toggle")[0].click()
-      //document.getElementById("sizeDropDown").click();
     } else {
       console.log('Add these to the cart')
       console.log('Style is ', props.info.name);
@@ -105,7 +96,7 @@ var AddToCart = (props) => {
         <div>
           <ButtonGroup>
             <Button title= "addToCart" onClick={addToCartHandler}> ADD TO CART</Button>
-            <Button title="favorite"> STAR</Button>
+            <Button title="favorite"> <img style={{height: "24px"}}  src={'../lib/img/StarEmpty.png'}></img></Button>
           </ButtonGroup>
         </div>
       </div>
