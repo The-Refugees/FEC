@@ -18,7 +18,6 @@ function QandA(props) {
   const [question_body, setQuestion] = useState('');
   const [nickname, setNickname] = useState('');
 
-
   const [newAnswers, setAnswers] = useState({});
   const [body, setAnswerBody] = useState('');
   const [data, setDate] = useState('');
@@ -62,29 +61,6 @@ function QandA(props) {
       console.log(error, article)
     })
   }
-
-  // var postNewAnswers = function() {
-  //   const headers = {
-  //     'Authorization': AUTH_TOKEN
-  //   }
-  //   const answerObj = {
-  //     body: body,
-  //     name: nickname,
-  //     email: email,
-  //     // product_id: 24156,
-  //     photos: []
-  //   }
-  //   axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${183084}/answers`, answerObj, {headers})
-  //   .then((response) => {
-  //     console.log(questions)
-  //     setAnswers(Object.assign(questions[1].answers, answerObj))
-  //     console.log(questions[1].answers)
-  //   })
-  //   .catch((error) => {
-  //     console.log(questions)
-  //     console.log(error, answerObj)
-  //   })
-  // }
 
     var newId = Math.round(Math.random() * (199999 - 100000) + 100000)
     for (var i = 0; i < questions.length; i++) {

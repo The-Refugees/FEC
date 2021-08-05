@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import AnswersList from './AnswersList.jsx';
 import AnswerForm from './AnswerForm.jsx';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
