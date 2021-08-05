@@ -27,7 +27,7 @@ function QandA(props) {
   useEffect(() => {
     setLoading(true);
     const AuthStr = AUTH_TOKEN;
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/?product_id=24156', { headers: { Authorization: AuthStr } })
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/?product_id=${props.currentId}`, { headers: { Authorization: AuthStr } })
       .then(response => {
         setQuestions(response.data.results)
         setLoading(false)
