@@ -25,11 +25,13 @@ function Gallery (props) {
   return (
       <ImageGallery showPlayButton={false}
         id="Gallery"
+        lazyload={true}
+
         //style={{cursor: "zoom-in;"}}
         onClick={fullScreenMode}
         //thumbnailPosition ="left"
         items={props.photos.map((photoObj)=>{
-        return {original: photoObj.url, thumbnail: photoObj.thumbnail_url, thumbnailHeight: "100px"} // originalHeight: "500px", originalWidth: "500px", thumbnailHeight: "50px", thumbnailWidth: "50px"
+        return {original: photoObj.thumbnail_url, thumbnail: photoObj.thumbnail_url, originalWidth: "500px", originalHeight: "700px", thumbnailHeight: "100px", thumbnailWidth: "150px"} //  thumbnailHeight: "50px", thumbnailWidth: "50px"
       })}/>
   );
 }

@@ -13,43 +13,23 @@ import Col from 'react-bootstrap/Col';
 
 function Overview (props) {
   const [styleList,setStyleList] = useState([]);
-  const [styleInfo, setStyle] = useState({photos: [], sale_price: null, skus: {}});
+  const [styleInfo, setStyle] = useState({photos: [{url: './lib/img/defaultImg.jpg'}], sale_price: null, skus: {}});
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
 
-  const solid = 0;
+
   useEffect ( () => {
     var productID = props.product.id;
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${productID}/styles?product_id=${productID}`, {headers: {Authorization: AUTH_TOKEN }})
+    axios.get(`http://localhost:3001/overview/${productID}`)
     .then( (response) => {
-      for (var i of response.data.results ) {
-        if(i['default?']) {
-          setStyle(i);
-          setStyleList(response.data.results);
-          break;
-        }
-      }
+      console.log("setting the overview state :) ", response.data)
+      setStyleList(response.data.styleList);
+      setStyle(response.data.style);
+      setRating(response.data.rating);
     })
     .catch( (err) => {
-      console.log('Houston we have this problem: ' + err);
+      console.log(err);
     });
-
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/meta?product_id=${productID}`, {headers: {Authorization: AUTH_TOKEN }})
-    .then( (response) => {
-      var total = 0;
-      var avg = 0;
-      for(var key in response.data.ratings) {
-        total += Number(response.data.ratings[key]);
-        avg += Number(key)*Number(response.data.ratings[key]);
-      }
-      avg=avg/total;
-      setRating([total, avg]);
-    })
-    .catch( (err) => {
-      console.log('cant calculate review total: ' + err);
-    });
-
-
-  }, [solid]);
+  }, [props.product.id]);
 
   var updateStyle = (newStyle) => {
     for (var i of styleList) {
@@ -63,9 +43,9 @@ function Overview (props) {
   }
 
   return (
-    <Container id="overview">
+    <Container id="overview" style={{padding: "50px 12px 100px 12px"}}>
       <Row >
-        <Col sm={6} md={6} lg={5} xl={4}>
+        <Col sm={6} md={6} lg={5} xl={5}>
           <Gallery photos={styleInfo.photos}/>
         </Col>
         <Col sm={6} md={6} lg={6}>

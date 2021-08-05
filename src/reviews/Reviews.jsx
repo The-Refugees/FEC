@@ -24,11 +24,11 @@ const Reviews = (props) => {
         <Col sm="auto">
           <Dropdown>
 
-            <Dropdown.Toggle as="span" id="sort-dropdown">
-              <b>{sortTitle}</b>
+            <Dropdown.Toggle as="span" id="sort-dropdown" style={{cursor: "pointer"}}>
+              <b style={{cursor: "pointer"}}>{sortTitle}</b>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
+            <Dropdown.Menu >
               <Dropdown.Item
                 onClick={() => {
                   handleSort('relevant');

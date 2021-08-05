@@ -35,7 +35,7 @@ const Ratings = (props) => {
 
         <Row key={star.star + 'star-bar'}>
           <Col sm={3} style={{padding: "0 0 0 12px"}}>
-            {star.star}Stars
+            {star.star} Stars
           </Col>
           <Col sm={8} style={{margin: "auto", padding: "0px", justifyContent: "left"}}>
             <ProgressBar variant="success" now={star.percent} />
