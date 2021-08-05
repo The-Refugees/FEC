@@ -18,7 +18,7 @@ function QandA(props) {
   const [nickname, setNickname] = useState('');
 
 
-  const [newAnswers, setAnswers] = useState();
+  const [newAnswers, setAnswers] = useState({});
   const [body, setAnswerBody] = useState('');
   const [data, setDate] = useState('');
   const [helpful, setHepfulness] = useState('');
@@ -31,7 +31,6 @@ function QandA(props) {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/?product_id=24156', { headers: { Authorization: AuthStr } })
       .then(response => {
         setQuestions(response.data.results)
-        console.log(response.data)
         setLoading(false)
       })
       .catch((error) => {
@@ -77,8 +76,8 @@ function QandA(props) {
     axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${183084}/answers`, answerObj, {headers})
     .then((response) => {
       console.log(questions)
-      setAnswers(Object.assign(questions[0].answers, answerObj))
-      console.log(answerObj)
+      setAnswers(Object.assign(questions[1].answers, answerObj))
+      console.log(questions[1].answers)
     })
     .catch((error) => {
       console.log(questions)
@@ -99,7 +98,7 @@ function QandA(props) {
       <h3>Questions and Answers</h3>
       <QuestionsSearch/>
       {!loading &&
-      <QuestionsList data={questions} loading={loading} setQuestions={setQuestions} postNewAnswers={postNewAnswers} setName={setName} setNickname={setNickname} setQuestion={setQuestion} setEmail={setEmail} setAnswerBody={setAnswerBody} addPhotos={addPhotos}/>
+      <QuestionsList data={questions} loading={loading} setQuestions={setQuestions} postNewAnswers={postNewAnswers} setName={setName} setNickname={setNickname} setEmail={setEmail} setAnswerBody={setAnswerBody} addPhotos={addPhotos}/>
       }
       {!loading &&
       <QuestionForm data={questions} loading={loading} update={postNewQuestions} setName={setName} setNickname={setNickname} setQuestion={setQuestion} setEmail={setEmail}/>

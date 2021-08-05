@@ -11,24 +11,14 @@ import QuestionForm from './QuestionForm.jsx';
 
 
 function Question(props) {
-
   var first2Answers = [];
-
   var getFirst2Answers = function() {
   Object.keys(props.answers).map((key, i) => {
     if (first2Answers.length !== 2) {
       first2Answers.push(props.answers[key])
     }
   })
-    for (var i = 0; i < first2Answers.length; i++) {
-      for (var keys in props.answers) {
-        if (props.answers[keys] === first2Answers[i] && first2Answers.length !== 0) {
-          delete props.answers[key]
-        }
-      }
-    }
-    return first2Answers
-
+  return first2Answers
 }
 getFirst2Answers()
 
@@ -56,7 +46,7 @@ getFirst2Answers()
                 {!props.loading &&
 
                  <Card>
-                     {Object.keys(props.answers).map((key, i) => (
+                     {Object.keys(props.answers).slice(2).map((key, i) => (
                        <Card key={i}>
                          <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}}>{'A: ' + props.answers[key].body}</Row>
                          <Row >{'by ' + props.answers[key].answerer_name + ' ' + dateParser(props.answers[key].date)}</Row>
