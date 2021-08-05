@@ -28,7 +28,7 @@ getFirst2Answers()
 
     <Card style={{padding: '10px', backgroundColor: "rgb(214,234,248)"}}>
       { 'Q: ' + props.questions}
-      <AnswerForm postNewAnswers={props.postNewAnswers} setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail}/>
+      <AnswerForm  setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail} body={props.body} nickname={props.nickname} email={props.email} id={props.id} answers={props.answers} setAnswers={props.setAnswers}/>
     </Card>
 
       {first2Answers.map((answer, i) => (

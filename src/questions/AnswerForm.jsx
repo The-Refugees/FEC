@@ -6,6 +6,8 @@ import ModalTitle from 'react-bootstrap/ModalTitle';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalFooter from 'react-bootstrap/ModalFooter';
 import Button from 'react-bootstrap/ModalFooter';
+import AUTH_TOKEN from '../config.js';
+import axios from 'axios';
 
 function AnswerForm(props) {
   const [show, setShow] = useState(false);
@@ -13,10 +15,35 @@ function AnswerForm(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+  var postNewAnswers = function() {
+    const headers = {
+      'Authorization': AUTH_TOKEN
+    }
+    const answerObj = {
+      body: props.body,
+      name: props.nickname,
+      email: props.email,
+      photos: []
+    }
+    var newSet = Object.create(props.answers)
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${props.id}/answers`, answerObj, {headers})
+    .then((response) => {
+      // var newSet = Object.create(props.answers)
+      props.setAnswers(Object.assign(newSet, answerObj))
+      console.log(props.answers, answerObj)
+    })
+    .catch((error) => {
+      console.log(props.id)
+      console.log(error, answerObj)
+    })
+  }
+
   var handleClick = function() {
-    props.postNewAnswers();
+    postNewAnswers();
     handleClose()
   }
+
 
   return (
     <>

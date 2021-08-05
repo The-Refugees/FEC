@@ -5,6 +5,7 @@ import QuestionForm from './QuestionForm.jsx';
 import axios from 'axios';
 import AUTH_TOKEN from '../config.js';
 import Container from 'react-bootstrap/Container';
+import AnswerForm from './AnswerForm.jsx'
 
 function QandA(props) {
 
@@ -22,8 +23,7 @@ function QandA(props) {
   const [body, setAnswerBody] = useState('');
   const [data, setDate] = useState('');
   const [helpful, setHepfulness] = useState('');
-  const [photos, addPhotos] = useState([])
-  // const [newid, createId] = useState('')
+  const [photos, addPhotos] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -32,6 +32,7 @@ function QandA(props) {
       .then(response => {
         setQuestions(response.data.results)
         setLoading(false)
+        console.log(response.data.results)
       })
       .catch((error) => {
         console.log('error ' + error);
@@ -62,28 +63,28 @@ function QandA(props) {
     })
   }
 
-  var postNewAnswers = function() {
-    const headers = {
-      'Authorization': AUTH_TOKEN
-    }
-    const answerObj = {
-      body: body,
-      name: nickname,
-      email: email,
-      // product_id: 24156,
-      photos: []
-    }
-    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${183084}/answers`, answerObj, {headers})
-    .then((response) => {
-      console.log(questions)
-      setAnswers(Object.assign(questions[1].answers, answerObj))
-      console.log(questions[1].answers)
-    })
-    .catch((error) => {
-      console.log(questions)
-      console.log(error, answerObj)
-    })
-  }
+  // var postNewAnswers = function() {
+  //   const headers = {
+  //     'Authorization': AUTH_TOKEN
+  //   }
+  //   const answerObj = {
+  //     body: body,
+  //     name: nickname,
+  //     email: email,
+  //     // product_id: 24156,
+  //     photos: []
+  //   }
+  //   axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${183084}/answers`, answerObj, {headers})
+  //   .then((response) => {
+  //     console.log(questions)
+  //     setAnswers(Object.assign(questions[1].answers, answerObj))
+  //     console.log(questions[1].answers)
+  //   })
+  //   .catch((error) => {
+  //     console.log(questions)
+  //     console.log(error, answerObj)
+  //   })
+  // }
 
     var newId = Math.round(Math.random() * (199999 - 100000) + 100000)
     for (var i = 0; i < questions.length; i++) {
@@ -98,7 +99,7 @@ function QandA(props) {
       <h3>Questions and Answers</h3>
       <QuestionsSearch/>
       {!loading &&
-      <QuestionsList data={questions} loading={loading} setQuestions={setQuestions} postNewAnswers={postNewAnswers} setName={setName} setNickname={setNickname} setEmail={setEmail} setAnswerBody={setAnswerBody} addPhotos={addPhotos}/>
+      <QuestionsList data={questions} loading={loading} setQuestions={setQuestions} setName={setName} setNickname={setNickname} setEmail={setEmail} setAnswerBody={setAnswerBody} addPhotos={addPhotos} body={body} nickname={nickname} email={email} setAnswers={setAnswers}/>
       }
       {!loading &&
       <QuestionForm data={questions} loading={loading} update={postNewQuestions} setName={setName} setNickname={setNickname} setQuestion={setQuestion} setEmail={setEmail}/>
