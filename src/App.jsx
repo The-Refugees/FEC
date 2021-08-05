@@ -6,6 +6,9 @@ import data from './overview/data.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import 'react-image-gallery/styles/css/image-gallery.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,20 +44,29 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({term: e.target.value})
   }
-
+//more complex styleing not available without a custome css file. could not implement a gradient in logo.
+//backgroundImage: "linear-gradient(diagonally, #7D3780, #E9BD43, #3778C2)",
+//Logo Colors are hard coded here and should be removed when improved style customization is available.
+//Productid available at this.state.currentProduct.id for widgets to dynamically pull in and use
   render() {
     return (
-      <div>
-        <h1 >Hello User! </h1>
-        <form onSubmit={this.handleProductSubmit}>
-          What index do you want to see?
-          <input type="number" name="productIndex" value={this.state.term} onChange={this.inputHandler}/>
-          <button type="submit"  value="Get Product"/>
-        </form>
+      <React.Fragment>
+        <Container id="Logo_Header" style={{padding: "50px 12px 100px 12px", background: "#C1436D"}}>
+          <Row>
+            <h1 style={{color: "#E9BD43"}}>LOGO!</h1>
+          </Row>
+          <Row>
+            <form style={{color: "#E9BD43"}} onSubmit={this.handleProductSubmit}>
+              Products available in a list. What index do you want to see?
+              <input type="number" name="productIndex" value={this.state.term} onChange={this.inputHandler}/>
+              <button type="submit"  value="Get Product"/>
+            </form>
+          </Row>
+        </Container>
         <Overview product={this.state.currentProduct}/>
         <QandA />
         <RatingsReviews productId='24156' />
-      </div>
+      </React.Fragment>
     );
   };
 }

@@ -43,9 +43,9 @@ function Overview (props) {
   }
 
   return (
-    <Container id="overview">
+    <Container id="overview" style={{padding: "50px 12px 100px 12px"}}>
       <Row >
-        <Col sm={6} md={6} lg={5} xl={4}>
+        <Col sm={6} md={6} lg={5} xl={5}>
           <Gallery photos={styleInfo.photos}/>
         </Col>
         <Col sm={6} md={6} lg={6}>
