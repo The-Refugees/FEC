@@ -48,7 +48,7 @@ function QandA(props) {
       email: email,
       product_id: 24156,
       question_body: question_body,
-      answers: newAnswers,
+      answers: {},
       'question_id': newId
     }
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions', article, {headers})
