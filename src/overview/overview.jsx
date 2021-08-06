@@ -10,8 +10,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-
-function Overview (props) {
+var Overview = (props) => {
   const [styleList,setStyleList] = useState([]);
   const [styleInfo, setStyle] = useState({photos: [{url: './lib/img/defaultImg.jpg'}], sale_price: null, skus: {}});
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
@@ -21,7 +20,6 @@ function Overview (props) {
     var productID = props.product.id;
     axios.get(`http://localhost:3001/overview/${productID}`)
     .then( (response) => {
-      console.log("setting the overview state :) ", response.data)
       setStyleList(response.data.styleList);
       setStyle(response.data.style);
       setRating(response.data.rating);
@@ -34,8 +32,6 @@ function Overview (props) {
   var updateStyle = (newStyle) => {
     for (var i of styleList) {
       if (i.name === newStyle) {
-        //console.log('alright! here we go update the style', i);
-        //var updateVal = ;
         setStyle(i);
         break;
       }

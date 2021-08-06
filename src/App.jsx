@@ -2,8 +2,6 @@ import React from 'react';
 import Overview from './overview/overview.jsx'
 import QandA from './questions/QandA.jsx';
 import RatingsReviews from './reviews/RatingsReviews.jsx';
-import data from './overview/data.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import Container from 'react-bootstrap/Container';
@@ -23,7 +21,6 @@ class App extends React.Component {
   componentDidMount() {
     axios.get(`http://localhost:3001/products`)
     .then( (response) => {
-      console.log('updating app state :)')
       this.setState({
         productList: response.data,
         currentProduct: response.data[0]

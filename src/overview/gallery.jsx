@@ -3,7 +3,7 @@ import ImageGallery from 'react-image-gallery';
 import Image from 'react-bootstrap/Image';
 import Ratio from 'react-bootstrap/Ratio';
 
-function Gallery (props) {
+var Gallery = (props) => {
   const [isFullScreen, setFullScreen] = useState(false);
 
   const handleSelect = (selectedIndex, e) => {
@@ -26,27 +26,12 @@ function Gallery (props) {
       <ImageGallery showPlayButton={false}
         id="Gallery"
         lazyload={true}
-
         //style={{cursor: "zoom-in;"}}
         onClick={fullScreenMode}
-        //thumbnailPosition ="left"
         items={props.photos.map((photoObj)=>{
-        return {original: photoObj.thumbnail_url, thumbnail: photoObj.thumbnail_url, originalWidth: "500px", originalHeight: "700px", thumbnailHeight: "100px", thumbnailWidth: "150px"} //  thumbnailHeight: "50px", thumbnailWidth: "50px"
+        return {original: photoObj.thumbnail_url, thumbnail: photoObj.thumbnail_url, originalWidth: "500px", originalHeight: "700px", thumbnailWidth: "100px", thumbnailHeight: "120px"} // thumbnailWidth is not working
       })}/>
   );
 }
 
 export default Gallery;
-
-/*     <Carousel interval={null} activeIndex={index} onSelect={handleSelect} indicatorLabels={props.photos.map((item) => {
-      return <Image src={item.thumbnail_url} thumbnail />
-      })}>
-      {props.photos.map((item, i) => {
-        return <Carousel.Item key={i} >
-          <img
-          className="d-block w-100"
-          src={item.url}
-          />
-        </Carousel.Item>
-        })}
-    </Carousel>*/

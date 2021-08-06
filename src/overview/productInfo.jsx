@@ -5,10 +5,9 @@ import AvgStarRating from '../../shared/AvgStarRating.jsx';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-var ProductInfo = (props) =>{
+var ProductInfo = (props) => {
 
   var currentPrice = () => {
-    //props.info can be used to update default price to current price here.
     if (props.info.sale_price !== null) {
       return <div><strike>${props.info.original_price}</strike>
       <span style={{color:"red"}}>    ${props.info.sale_price}</span>

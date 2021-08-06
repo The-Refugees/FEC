@@ -4,15 +4,13 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
 
 
-var StyleSelector =(props) => {
+var StyleSelector = (props) => {
   const [currentStyle, setStyle] = useState(props.info[0]);
-  const solid = 0;
 
   useEffect(()=>{setStyle(props.info[0])}, [props.info[0]])
 
   var clickHandler = (e) => {
     e.preventDefault();
-    //console.log('Click!');
     props.styleUpdater(e.target.name);
   }
 
@@ -25,7 +23,7 @@ var StyleSelector =(props) => {
   }
 
   var grid = () => {
-    var list = props.info[1]; //return to this line when i have a working git hub token
+    var list = props.info[1]; 
     var numRows = new Array(Math.ceil(list.length/4)).fill(0);
     return numRows.map( (row, i) => {
       return (
