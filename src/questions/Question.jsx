@@ -7,6 +7,8 @@ import {Accordion, Card} from 'react-bootstrap';
 import {dateParser} from '../../shared/helpers.js'
 import Button from 'react-bootstrap/ModalFooter';
 import QuestionForm from './QuestionForm.jsx';
+import axios from 'axios';
+import AUTH_TOKEN from '../config.js';
 
 
 function Question(props) {
@@ -18,8 +20,30 @@ function Question(props) {
     }
   })
   return first2Answers
-}
-getFirst2Answers()
+  }
+  getFirst2Answers()
+
+  useEffect(() => {
+    console.log(props.first2Questions)
+  })
+
+  var deleteAnswer = function() {
+    const headers = {
+      'Authorization': AUTH_TOKEN
+    }
+    // need to get the answer id below
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/2709988/answers`, {headers})
+    .then((response) => {
+      // filter the answers object for answers that dont have the selected id
+      // then re-set the answers
+      const filteredAnswers = Object.keys(props.answers).filter(answer => answer.id !== 2709988)
+      props.setAnswers({filteredAnswers})
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
 
 
   return (
@@ -33,7 +57,7 @@ getFirst2Answers()
       {first2Answers.map((answer, i) => (
         <Container key={i}>
           <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}} >{'A: ' + answer.body}</Row>
-          <Row >{'by ' + answer.answerer_name + ' ' + dateParser(answer.date) + '   ' + 'Helpful?'}</  Row>
+          <Row >{'by ' + answer.answerer_name + ' ' + dateParser(answer.date) + '   ' + 'Helpful?'}</Row>
         </Container>
       ))}
 
@@ -48,7 +72,7 @@ getFirst2Answers()
                      {Object.keys(props.answers).slice(2).map((key, i) => (
                        <Card key={i}>
                          <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}}>{'A: ' + props.answers[key].body}</Row>
-                         <Row >{'by ' + props.answers[key].answerer_name + ' ' + dateParser(props.answers[key].date)}</Row>
+                         <Row >{'by ' + props.answers[key].answerer_name + ' ' + dateParser(props.answers[key].date) + ' Helpful?'}</Row>
                        </Card>
                       ))}
                  </Card>

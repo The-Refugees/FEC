@@ -62,6 +62,7 @@ function QandA(props) {
     })
   }
 
+
     var newId = Math.round(Math.random() * (199999 - 100000) + 100000)
     for (var i = 0; i < questions.length; i++) {
       if (questions[i].question_id === newId) {
