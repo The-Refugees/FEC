@@ -28,8 +28,8 @@ var Gallery = (props) => {
         lazyload={true}
         //style={{cursor: "zoom-in;"}}
         onClick={fullScreenMode}
-        items={props.photos.map((photoObj)=>{
-        return {original: photoObj.thumbnail_url, thumbnail: photoObj.thumbnail_url, originalWidth: "500px", originalHeight: "700px", thumbnailWidth: "100px", thumbnailHeight: "120px"} // thumbnailWidth is not working
+        items={props.photos.map((photoObj, index)=>{
+        return {original: photoObj.thumbnail_url, thumbnail: photoObj.thumbnail_url, originalHeight: "700",originalWidth: "500", thumbnailHeight: "120", thumbnailWidth: "75",  originalAlt:`Picture of product ${props.product} style ${props.style} number ${index+1}`, thumbnailAlt: `Thumbnail of product ${props.product} style ${props.style} number ${index+1}`} // thumbnailWidth is not working
       })}/>
   );
 }

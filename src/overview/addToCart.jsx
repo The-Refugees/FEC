@@ -96,7 +96,7 @@ var AddToCart = (props) => {
         <div>
           <ButtonGroup>
             <Button title= "addToCart" onClick={addToCartHandler}> ADD TO CART</Button>
-            <Button title="favorite"> <img style={{height: "24px"}}  src={'../lib/img/Star_Full.png'}></img></Button>
+            <Button title="favorite"> <img height= "24"  width= "24" src={'../lib/img/Star_Full.png'} alt='Full star to Favorite'></img></Button>
           </ButtonGroup>
         </div>
       </div>

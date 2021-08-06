@@ -7,6 +7,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button'
 
 class App extends React.Component {
   constructor(props) {
@@ -48,15 +49,16 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Container id="Logo_Header" style={{padding: "50px 12px 100px 12px", background: "#C1436D"}}>
+        <Container id="Logo_Header" style={{padding: "50px 12px 100px 12px", background: "#7D3780"}}>
           <Row>
             <h1 style={{color: "#E9BD43"}}>LOGO!</h1>
           </Row>
           <Row>
             <form style={{color: "#E9BD43"}} onSubmit={this.handleProductSubmit}>
-              Products available in a list. What index do you want to see?
-              <input type="number" name="productIndex" value={this.state.term} onChange={this.inputHandler}/>
-              <button type="submit"  value="Get Product"/>
+              <label >Products available in a list. What index do you want to see?
+                <input type="number" name="productIndex" value={this.state.term} onChange={this.inputHandler}/>
+                <Button type="submit"> Get Product</Button>
+              </label>
             </form>
           </Row>
         </Container>

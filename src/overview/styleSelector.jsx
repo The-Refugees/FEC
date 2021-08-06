@@ -23,7 +23,7 @@ var StyleSelector = (props) => {
   }
 
   var grid = () => {
-    var list = props.info[1]; 
+    var list = props.info[1];
     var numRows = new Array(Math.ceil(list.length/4)).fill(0);
     return numRows.map( (row, i) => {
       return (
@@ -31,7 +31,7 @@ var StyleSelector = (props) => {
           {list.slice(i*4,i*4+4).map( (style, k)=>{
             return (
               <Col key={'col' + k} md={3} name={selected(style.name)}>
-                <Image src={style.photos[0].thumbnail_url} thumbnail name={style.name} onClick={clickHandler} />
+                <Image src={style.photos[0].thumbnail_url} alt={`thumbnail of product ${props.product} style ${style.name}`} thumbnail name={style.name} onClick={clickHandler} height='150' width='95'/>
               </Col>
             );
           })}
