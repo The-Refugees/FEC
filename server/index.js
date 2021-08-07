@@ -10,7 +10,7 @@ var port = 3001;
 
 app.use(compression());
 app.use(express.json());
-app.use(cors()); 
+app.use(cors());
 
 
 app.use(express.static(__dirname + '/../dist'));
@@ -18,6 +18,8 @@ app.use(express.static(__dirname + '/../dist'));
 app.get('/products', (req, res)=> {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/`, {headers: {Authorization: AUTH_TOKEN}})
     .then( (response) => {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
       res.status(200).send(response.data);
     })
     .catch( (err) => {
@@ -32,6 +34,8 @@ app.get('/overview/:productID', (req, res)=> {
   var rating;
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${req.params.productID}/styles?product_id=${req.params.productID}`, {headers: {Authorization: AUTH_TOKEN }})
   .then( (response) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     for (var i of response.data.results ) {
       styleList = response.data.results;
       if (i['default?']) {
@@ -80,6 +84,8 @@ app.get('/overview/:productID', (req, res)=> {
     })
     .then( () => {
       //console.log('got here', style);
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
       res.status(200).send({style, styleList, rating});
     })
     .catch( (err) => {
