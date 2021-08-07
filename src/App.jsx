@@ -62,7 +62,7 @@ class App extends React.Component {
           </Row>
         </Container>
         <Overview product={this.state.currentProduct}/>
-        <QandA />
+        <QandA currentId={this.state.currentProduct.id}/>
         <RatingsReviews productId='24156' />
       </React.Fragment>
     );

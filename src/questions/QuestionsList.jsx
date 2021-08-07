@@ -8,17 +8,17 @@ import QuestionForm from './QuestionForm.jsx';
 
 function QuestionsList(props) {
 
-  // const [test, after2] = useState([]);
-  // useEffect(() => {
-  //   for (var i = 2; i < props.data.length; i++) {
-  //     after2(props.data[i])
-  //   }
-  // }, [after2]);
+  var first2Questions = [];
+  var getFirst2Questions = function() {
+    for (var i = 0; i < props.data.length; i++) {
+      if (first2Questions.length !== 2) {
+        first2Questions.push(props.data[i])
+      }
+    }
+    return first2Questions
+  }
+  getFirst2Questions()
 
-
-  useEffect(() => {
-    // console.log('8/2/21', props.data)
-  }, [props.data])
 
   return (
     <div id="questionList">
@@ -26,11 +26,10 @@ function QuestionsList(props) {
           <Container>
             {props.data.map((item, i) => (
 
-              <Question key={i} q={item.question_body} a={item.answers} data={props.data} loading={props.loading}/>
-
+              <Question key={i} id={item.question_id} questions={item.question_body} answers={item.answers} data={props.data} loading={props.loading}  setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail} body={props.body} nickname={props.nickname} email={props.email} setAnswers={props.setAnswers} first2Questions={first2Questions} helpfulness={item.question_helpfulness} item={item} setQuestions={props.setQuestions} helpful={props.helpful} setHepfulness={props.setHepfulness}/>
             ))}
-            </Container>
-            }
+          </Container>
+        }
     </div>
   )
 }
