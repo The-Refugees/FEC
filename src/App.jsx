@@ -48,16 +48,18 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Container id="Logo_Header" style={{padding: "50px 12px 100px 12px"}}>
+        <Container id="Logo_Header" fluid style={{padding: "30px 12px 50px 12px"}}>
           <Row>
-            <h1 style={{color: "#E9BD43"}}>LOGO!</h1>
+            <p style={{color: "#E9BD43", fontFamily: "Brush Script MT", fontSize: "100px"}}>Passerelle</p>
           </Row>
           <Row>
             <form style={{color: "#E9BD43"}} onSubmit={this.handleProductSubmit}>
-              <label >Products available in a list. What index do you want to see?
-                <input type="number" name="productIndex" value={this.state.term} onChange={this.inputHandler}/>
-                <Button id='customButton' type="submit"> Get Product</Button>
-              </label>
+              <Row>
+                <Col sm={6}>
+                  <input type="number" name="productIndex" placeholder="product list" value={this.state.term} onChange={this.inputHandler}/>
+                  <Button id='customButton' type="submit"> Get Product</Button>
+                </Col>
+              </Row>
             </form>
           </Row>
         </Container>
