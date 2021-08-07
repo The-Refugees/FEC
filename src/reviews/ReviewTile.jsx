@@ -61,7 +61,7 @@ const ReviewTile = (props) => {
 
       <Row>
         <Card.Footer>
-          <span onClick={handleHelpfulClick}>Helpful? Yes</span> &#40;{helpfulness}&#41;
+          <span /*onClick={handleHelpfulClick}*/>Helpful? Yes</span> &#40;{helpfulness}&#41;
         </Card.Footer>
       </Row>
       </Card>
