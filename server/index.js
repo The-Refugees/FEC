@@ -1,6 +1,3 @@
-//The following two modules can be uninstalled
-//var sharp = require('sharp');
-//const fsPromise = require('fs/promises');
 var express = require('express');
 var axios = require('axios');
 var compression = require('compression');
