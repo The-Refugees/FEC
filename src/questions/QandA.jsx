@@ -78,7 +78,7 @@ function QandA(props) {
       <h3>Questions and Answers</h3>
       <QuestionsSearch data={questions} setQuestions={setQuestions}/>
       {!loading &&
-      <QuestionsList data={questions} loading={loading} setQuestions={setQuestions} setName={setName} setNickname={setNickname} setEmail={setEmail} setAnswerBody={setAnswerBody} addPhotos={addPhotos} body={body} nickname={nickname} email={email} setAnswers={setAnswers}/>
+      <QuestionsList data={questions} loading={loading} setQuestions={setQuestions} setName={setName} setNickname={setNickname} setEmail={setEmail} setAnswerBody={setAnswerBody} addPhotos={addPhotos} body={body} nickname={nickname} email={email} setAnswers={setAnswers} helpful={helpful} setHepfulness={setHepfulness}/>
       }
       {!loading &&
       <QuestionForm data={questions} loading={loading} update={postNewQuestions} setName={setName} setNickname={setNickname} setQuestion={setQuestion} setEmail={setEmail}/>

@@ -34,7 +34,8 @@ function Question(props) {
     .then((response) => {
       console.log('update!')
       props.item.question_helpfulness += 1
-      props.setQuestions(props.data)
+      props.setHepfulness(props.item.question_helpfulness)
+
       console.log(props.item.question_helpfulness)
 
     })
