@@ -1,4 +1,17 @@
 
-.cursor-pointer {
-  cursor: pointer;
+#Logo_Header {
+  background-image: radial-gradient( #E9BD43,#7D3780,  #3778C2);
 }
+#style_selected_true {
+  border: 10px solid #7D3780;
+  border-radius: 5px;
+}
+
+img.image-gallery-image {
+  cursor: zoom-in;
+}
+
+#sizeDropDown, #customButton {
+  background-color: #3778C2;
+}
+

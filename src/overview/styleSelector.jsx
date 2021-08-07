@@ -30,8 +30,8 @@ var StyleSelector = (props) => {
         <Row key={'row' + i} className="justify-content-start">
           {list.slice(i*4,i*4+4).map( (style, k)=>{
             return (
-              <Col key={'col' + k} md={3} name={selected(style.name)}>
-                <Image src={style.photos[0].thumbnail_url} alt={`thumbnail of product ${props.product} style ${style.name}`} thumbnail name={style.name} onClick={clickHandler} height='150' width='95'/>
+              <Col key={'col' + k} md={3} >
+                <Image src={style.photos[0].thumbnail_url} alt={`thumbnail of product ${props.product} style ${style.name}`} thumbnail name={style.name} onClick={clickHandler} height='150' width='95' id={`style_selected_${selected(style.name)}`}/>
               </Col>
             );
           })}

@@ -24,7 +24,7 @@ var Gallery = (props) => {
 
   return (
       <ImageGallery showPlayButton={false}
-        id="Gallery"
+        id="gallery"
         lazyload={true}
         //style={{cursor: "zoom-in;"}}
         onClick={fullScreenMode}

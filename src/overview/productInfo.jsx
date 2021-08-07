@@ -36,7 +36,7 @@ var ProductInfo = (props) => {
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
       </span>
       <a data-pin-do="buttonBookmark" data-pin-tall="true" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/"><img height='32' width='32' src="http://assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png" alt='Save on Pinterest Button'/></a>
-      <a className="twitter-share-button" name='SaveToPinterestLink'
+      <a className="twitter-share-button" name='TweetLink'
       href="https://twitter.com/intent/tweet?text=Hello%20world"
       data-size="large">
       Tweet</a>

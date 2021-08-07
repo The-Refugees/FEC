@@ -42,14 +42,13 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({term: e.target.value})
   }
-//more complex styleing not available without a custome css file. could not implement a gradient in logo.
-//backgroundImage: "linear-gradient(diagonally, #7D3780, #E9BD43, #3778C2)",
+
 //Logo Colors are hard coded here and should be removed when improved style customization is available.
 //Productid available at this.state.currentProduct.id for widgets to dynamically pull in and use
   render() {
     return (
       <React.Fragment>
-        <Container id="Logo_Header" style={{padding: "50px 12px 100px 12px", background: "#7D3780"}}>
+        <Container id="Logo_Header" style={{padding: "50px 12px 100px 12px"}}>
           <Row>
             <h1 style={{color: "#E9BD43"}}>LOGO!</h1>
           </Row>
@@ -57,7 +56,7 @@ class App extends React.Component {
             <form style={{color: "#E9BD43"}} onSubmit={this.handleProductSubmit}>
               <label >Products available in a list. What index do you want to see?
                 <input type="number" name="productIndex" value={this.state.term} onChange={this.inputHandler}/>
-                <Button type="submit"> Get Product</Button>
+                <Button id='customButton' type="submit"> Get Product</Button>
               </label>
             </form>
           </Row>
