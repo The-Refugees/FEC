@@ -8,9 +8,9 @@ const ReviewTile = (props) => {
   const {review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photos} = props.review;
 
 
-  const handleHelpfulClick = () => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/?product_id=${productId}/helpful`)
-  }
+  // const handleHelpfulClick = () => {
+  //   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/?product_id=${productId}/helpful`)
+  // }
 
   return (
     <Card className="review-tile">
