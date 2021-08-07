@@ -2,7 +2,7 @@ var express = require('express');
 var axios = require('axios');
 var compression = require('compression');
 var AUTH_TOKEN = require('./config.js');
-
+var cors = require('cors');
 
 
 var app = express();
@@ -10,12 +10,13 @@ var port = 3001;
 
 app.use(compression());
 app.use(express.json());
+app.use(cors()); 
 
 
 app.use(express.static(__dirname + '/../dist'));
 
 app.get('/products', (req, res)=> {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/`, {headers: {Authorization: AUTH_TOKEN }})
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/`, {headers: {Authorization: AUTH_TOKEN}})
     .then( (response) => {
       res.status(200).send(response.data);
     })
