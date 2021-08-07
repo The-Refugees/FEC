@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/products`)
+    axios.get(`/products`)
     .then( (response) => {
       this.setState({
         productList: response.data,

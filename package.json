@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -w --mode development --config webpack.config.js",
     "test": "jest",
-    "start": "nodemon server/index.js"
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",

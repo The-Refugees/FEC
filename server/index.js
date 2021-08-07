@@ -85,7 +85,7 @@ app.get('/overview/:productID', (req, res)=> {
     .then( () => {
       //console.log('got here', style);
       res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+      //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
       res.status(200).send({style, styleList, rating});
     })
     .catch( (err) => {
