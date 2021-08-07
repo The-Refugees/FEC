@@ -10,10 +10,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-
-function Overview (props) {
+var Overview = (props) => {
   const [styleList,setStyleList] = useState([]);
-  const [styleInfo, setStyle] = useState({photos: [{url: './lib/img/defaultImg.jpg'}], sale_price: null, skus: {}});
+  const [styleInfo, setStyle] = useState({photos: [{url: "https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"}], name: '', sale_price: null, skus: {}});
   const [[ratingTotal, ratingAvg] , setRating] = useState([0,0]);
 
 
@@ -21,7 +20,6 @@ function Overview (props) {
     var productID = props.product.id;
     axios.get(`http://localhost:3001/overview/${productID}`)
     .then( (response) => {
-      console.log("setting the overview state :) ", response.data)
       setStyleList(response.data.styleList);
       setStyle(response.data.style);
       setRating(response.data.rating);
@@ -34,8 +32,6 @@ function Overview (props) {
   var updateStyle = (newStyle) => {
     for (var i of styleList) {
       if (i.name === newStyle) {
-        //console.log('alright! here we go update the style', i);
-        //var updateVal = ;
         setStyle(i);
         break;
       }
@@ -46,14 +42,14 @@ function Overview (props) {
     <Container id="overview" style={{padding: "50px 12px 100px 12px"}}>
       <Row >
         <Col sm={6} md={6} lg={5} xl={5}>
-          <Gallery photos={styleInfo.photos}/>
+          <Gallery photos={styleInfo.photos} product={props.product.name} style={styleInfo.name}/>
         </Col>
         <Col sm={6} md={6} lg={6}>
           <Row>
             <ProductInfo product={props.product} info={styleInfo} rating={[ratingTotal, ratingAvg]}/>
           </Row>
           <Row>
-            <StyleSelector info={[styleInfo.name, styleList]} styleUpdater={updateStyle}/>
+            <StyleSelector product={props.product} info={[styleInfo.name, styleList]} styleUpdater={updateStyle}/>
           </Row>
           <Row>
             <AddToCart info={styleInfo}/>

@@ -1,15 +1,17 @@
 var express = require('express');
-var sharp = require('sharp');
 var axios = require('axios');
-const fsPromise = require('fs/promises');
-
+var compression = require('compression');
 var AUTH_TOKEN = require('./config.js');
+
+
 
 var app = express();
 var port = 3001;
 
+app.use(compression());
 app.use(express.json());
-console.log(__dirname + '/../dist')
+
+
 app.use(express.static(__dirname + '/../dist'));
 
 app.get('/products', (req, res)=> {
