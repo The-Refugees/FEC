@@ -18,7 +18,7 @@ var Overview = (props) => {
 
   useEffect ( () => {
     var productID = props.product.id;
-    axios.get(`http://localhost:3001/overview/${productID}`)
+    axios.get(`/overview/${productID}`)
     .then( (response) => {
       setStyleList(response.data.styleList);
       setStyle(response.data.style);
