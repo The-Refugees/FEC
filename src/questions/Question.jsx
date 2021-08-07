@@ -32,34 +32,45 @@ function Question(props) {
     }
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${props.id}/helpful`, null, {headers})
     .then((response) => {
-      console.log('update!')
-      props.item.question_helpfulness += 1
-      props.setHepfulness(props.item.question_helpfulness)
-
-      console.log(props.item.question_helpfulness)
-
+      props.item.question_helpfulness += 1;
+      props.setHepfulness(props.item.question_helpfulness);
     })
     .catch((error) => {
       console.log(error)
     })
   }
 
+  var updateAnswerHelpfulness = function() {
+    const headers = {
+      'Authorization': AUTH_TOKEN
+    }
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/answers/${props.answers[key].id}/helpful`, null, {headers})
+    .then((response) => {
+      props.answers[key].helpfulness += 1;
+      props.setHepfulness(props.answers[key].helpfulness += 1);
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
+
   return (
     <Container id="question" >
 
-    <Card style={{padding: '10px', backgroundColor: "rgb(214,234,248)"}}>
-      <Row>
-      { 'Q: ' + props.questions + ' Helpful? ' + '(' + props.helpfulness + ')'}
-      <Button onClick={updateQuestionHelpfulness}>yes</Button>
-      </Row>
-      <AnswerForm  setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail} body={props.body} nickname={props.nickname} email={props.email} id={props.id} answers={props.answers} setAnswers={props.setAnswers}/>
-    </Card>
+    <Row style={{padding: '6px', backgroundColor: "rgb(214,234,248)"}}>
+
+      <Col>{ 'Q: ' + props.questions}</Col>
+      <Col md="auto" style={{top: "50px"}}>{'Helpful? ' + '(' + props.helpfulness + ')'}</Col>
+      <Col xs lg="1" ><Button onClick={updateQuestionHelpfulness}>yes |</Button></Col>
+      <Col xs lg="2"><AnswerForm  setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail} body={props.body} nickname={props.nickname} email={props.email} id={props.id} answers={props.answers} setAnswers={props.setAnswers}/></Col>
+    </Row>
 
     {first2Answers.map((answer, i) => (
-      <Container key={i}>
-        <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}} >{'A: ' + answer.body}</Row>
-        <Row >{'by ' + answer.answerer_name + ' ' + dateParser(answer.date) + ' Helpful? ' + '(' + answer.helpfulness + ')'}</Row>
-      </Container>
+      <Row key={i}>
+        <Col style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}} >{'A: ' + answer.body}</Col>
+        <Row style={{padding: '12px'}} >{'by ' + answer.answerer_name + ', ' + dateParser(answer.date) + ' | ' + ' Helpful? ' + '(' + answer.helpfulness + ')'  + ' yes ' + ' | '}Report</Row>
+      </Row>
       ))}
 
       {!props.loading &&
@@ -71,11 +82,11 @@ function Question(props) {
 
                  <Card>
                      {Object.keys(props.answers).slice(2).map((key, i) => (
-                       <Card key={i}>
+                       <Row key={i}>
                          <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}}>{'A: ' + props.answers[key].body}</Row>
-                         <Row >{'by ' + props.answers[key].answerer_name + ' ' + dateParser(props.answers[key].date) + ' Helpful? ' + '(' + props.answers[key].helpfulness + ')'}
+                         <Row >{'by ' + props.answers[key].answerer_name + ' ' + dateParser(props.answers[key].date) + ' Helpful? ' + '(' + props.answers[key].helpfulness + ')'  + ' yes ' + ' | '}
+                         Report</Row>
                          </Row>
-                       </Card>
                       ))}
                  </Card>
 

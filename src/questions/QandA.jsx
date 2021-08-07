@@ -31,7 +31,6 @@ function QandA(props) {
       .then(response => {
         setQuestions(response.data.results)
         setLoading(false)
-        console.log(response.data.results)
       })
       .catch((error) => {
         console.log('error ' + error);
