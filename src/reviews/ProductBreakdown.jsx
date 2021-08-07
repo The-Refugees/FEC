@@ -73,8 +73,8 @@ const ProductBreakdown = (props) => {
       {charArray.map((char, index) => {
         return (
           <React.Fragment key={char.name + index}>
-          <Row>
-            {char.name}
+          <Row style={{margin: "0 0 -12px 0"}}>
+            <b>{char.name}</b>
           </Row>
           <Row>
             <img
@@ -84,7 +84,7 @@ const ProductBreakdown = (props) => {
                   alt={slider[char.avg].alt}
                 />
           </Row>
-          <Row>
+          <Row style={{margin: "-12px 0 0 0"}}>
             <Col sm={8}>
               <p style={{fontSize: "14px"}}>{text[char.name][0]}</p>
             </Col>
