@@ -19,7 +19,7 @@ app.get('/products', (req, res)=> {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/`, {headers: {Authorization: AUTH_TOKEN}})
     .then( (response) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+      //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
       res.status(200).send(response.data);
     })
     .catch( (err) => {
@@ -35,7 +35,7 @@ app.get('/overview/:productID', (req, res)=> {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/products/${req.params.productID}/styles?product_id=${req.params.productID}`, {headers: {Authorization: AUTH_TOKEN }})
   .then( (response) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    //res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     for (var i of response.data.results ) {
       styleList = response.data.results;
       if (i['default?']) {
