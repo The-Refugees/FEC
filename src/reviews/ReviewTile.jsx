@@ -5,8 +5,12 @@ import AvgStarRating from '../../shared/AvgStarRating.jsx';
 
 const ReviewTile = (props) => {
 
-  let {review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photos} = props.review;
+  const {review_id, rating, summary, recommend, response, body, date, reviewer_name, helpfulness, photos} = props.review;
 
+
+  // const handleHelpfulClick = () => {
+  //   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hratx/reviews/?product_id=${productId}/helpful`)
+  // }
 
   return (
     <Card className="review-tile">
@@ -57,7 +61,7 @@ const ReviewTile = (props) => {
 
       <Row>
         <Card.Footer>
-          Helpful? Yes &#40;{helpfulness}&#41; | No
+          <span /*onClick={handleHelpfulClick}*/>Helpful? Yes</span> &#40;{helpfulness}&#41;
         </Card.Footer>
       </Row>
       </Card>

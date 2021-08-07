@@ -9,9 +9,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 const Reviews = (props) => {
 
-  const {reviews, reviewsCount, newReviewClicked, setNewReviewClicked, handleSort} = props;
-  const [sortTitle, setSortTitle] = useState('Relevance');
+  const {reviews, reviewsCount, newReviewClicked, setNewReviewClicked,
+    handleSort, productName, productId, characteristics} = props;
 
+  const [sortTitle, setSortTitle] = useState('Relevance');
 
   return (
     <Col id="reviews">
@@ -66,6 +67,9 @@ const Reviews = (props) => {
         <NewReview
           newReviewClicked={newReviewClicked}
           setNewReviewClicked={setNewReviewClicked}
+          productName={productName}
+          productId={productId}
+          characteristics={characteristics}
         />
       }
     </Col>

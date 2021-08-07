@@ -4,14 +4,14 @@ import AvgStarRating from '../../shared/AvgStarRating.jsx';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import ProductBreakdown from './ProductBreakdown.jsx';
 
 
 const Ratings = (props) => {
-  let {ratings, recommended, characteristics} = props.ratings;
+  const {ratings, recommended, characteristics} = props.ratings;
   let rating = avgRating(ratings);
   let recommendedAverage = percentRecommended(recommended);
   let percentRatings = percentRating(ratings);
-  const [filtered, setFiltered] = useState([false, false, false, false, false]);
 
 
   return (
@@ -23,12 +23,6 @@ const Ratings = (props) => {
         <Col sm={8} style={{margin: "auto"}}>
           <AvgStarRating rating={rating} />
         </Col>
-      </Row>
-
-      <Row>
-        <h5 id="rating-breakdown">
-          Rating Breakdown
-        </h5>
       </Row>
 
       {percentRatings.map((star) => (
@@ -47,7 +41,6 @@ const Ratings = (props) => {
 
       ))}
 
-
       <Row>
         <p id="recommend" style={{fontSize: "14px", padding: "20px 12px"}}>
           {recommendedAverage}% of reviewers recommend this product
@@ -55,13 +48,11 @@ const Ratings = (props) => {
       </Row>
 
       <Row>
-        <h5 id="product-breakdown">
-          Product Breakdown
-        </h5>
+        <ProductBreakdown characteristics={characteristics} />
       </Row>
 
-
     </React.Fragment>
+
   )
 }
 

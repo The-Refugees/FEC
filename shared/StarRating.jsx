@@ -55,7 +55,7 @@ const StarRating = (props) => {
   };
   const onSaveRating = (index) => {
     setRating(index);
-    props.setRating(index); 
+    props.setRating(index);
   };
 
   return(

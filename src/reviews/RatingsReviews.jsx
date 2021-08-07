@@ -33,7 +33,7 @@ const RatingsReviews = (props) => {
       }
     });
 
-  },[reviewPage, sort]);
+  },[reviewPage, sort, productId]);
 
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const RatingsReviews = (props) => {
       }
     });
 
-  }, [])
+  }, [productId])
 
 
   const handleSort = (sortBy) => {
@@ -105,6 +105,9 @@ const RatingsReviews = (props) => {
               newReviewClicked={newReviewClicked}
               setNewReviewClicked={setNewReviewClicked}
               handleSort={handleSort}
+              productId={productId}
+              productName={props.productName}
+              characteristics={ratings.characteristics}
             />
             <Row>
               <Col sm={10}>
