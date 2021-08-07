@@ -71,12 +71,12 @@ var AddToCart = (props) => {
       <div>
         <DropdownButton id="sizeDropDown" as={ButtonGroup} title="Out Of Stock" name={generateSizeList()} disabled>
         </DropdownButton>
-        <DropdownButton as={ButtonGroup} title={quantityTitle}>
+        <DropdownButton id='customButton' as={ButtonGroup} title={quantityTitle}>
         </DropdownButton>
         <div>
           <ButtonGroup>
-            <Button title= "addToCart" hidden> ADD TO CART</Button>
-            <Button title="favorite"> STAR</Button>
+            <Button id='customButton' title= "addToCart" hidden> ADD TO CART</Button>
+            <Button id='customButton' title="favorite"> <img height= "24"  width= "24" src={'../lib/img/Star_Full.png'} alt='Full star to Favorite'></img></Button>
           </ButtonGroup>
         </div>
       </div>
@@ -88,15 +88,15 @@ var AddToCart = (props) => {
         {generateSizeList().map( (size, i) => (
           <Dropdown.Item onClick={sizeClickHandler} key={i} name={size} as="button">{size}</Dropdown.Item>))}
         </DropdownButton>
-        <DropdownButton as={ButtonGroup} title={quantityTitle}>
+        <DropdownButton id='customButton' as={ButtonGroup} title={quantityTitle}>
         <Dropdown.Item as="button" active>1</Dropdown.Item>
         {generateQuantityList(currentSize).map( (quantity,i) => (
           <Dropdown.Item onClick={quantityClickHandler} name={`qty_${i+1}`}key={i}>{i+1}</Dropdown.Item>))}
         </DropdownButton>
         <div>
           <ButtonGroup>
-            <Button title= "addToCart" onClick={addToCartHandler}> ADD TO CART</Button>
-            <Button title="favorite"> <img style={{height: "24px"}}  src={'../lib/img/StarEmpty.png'}></img></Button>
+            <Button id='customButton' title= "addToCart" onClick={addToCartHandler}> ADD TO CART</Button>
+            <Button id='customButton' title="favorite"> <img height= "24"  width= "24" src={'../lib/img/Star_Full.png'} alt='Full star to Favorite'></img></Button>
           </ButtonGroup>
         </div>
       </div>
