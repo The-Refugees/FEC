@@ -26,7 +26,7 @@ function QuestionsList(props) {
           <Container>
             {props.data.map((item, i) => (
 
-              <Question key={i} id={item.question_id} questions={item.question_body} answers={item.answers} data={props.data} loading={props.loading}  setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail} body={props.body} nickname={props.nickname} email={props.email} setAnswers={props.setAnswers} first2Questions={first2Questions}/>
+              <Question key={i} id={item.question_id} questions={item.question_body} answers={item.answers} data={props.data} loading={props.loading}  setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail} body={props.body} nickname={props.nickname} email={props.email} setAnswers={props.setAnswers} first2Questions={first2Questions} helpfulness={item.question_helpfulness} item={item} setQuestions={props.setQuestions}/>
 
             ))}
           </Container>

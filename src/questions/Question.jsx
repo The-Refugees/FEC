@@ -10,10 +10,13 @@ import QuestionForm from './QuestionForm.jsx';
 import axios from 'axios';
 import AUTH_TOKEN from '../config.js';
 
-
 function Question(props) {
+
   var first2Answers = [];
   var getFirst2Answers = function() {
+    if (Object.keys(props.answers).length === 0) {
+      return []
+    }
   Object.keys(props.answers).map((key, i) => {
     if (first2Answers.length !== 2) {
       first2Answers.push(props.answers[key])
@@ -23,42 +26,39 @@ function Question(props) {
   }
   getFirst2Answers()
 
-  useEffect(() => {
-    console.log(props.first2Questions)
-  })
-
-  var deleteAnswer = function() {
+  var updateQuestionHelpfulness = function() {
     const headers = {
       'Authorization': AUTH_TOKEN
     }
-    // need to get the answer id below
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/2709988/answers`, {headers})
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${props.id}/helpful`, null, {headers})
     .then((response) => {
-      // filter the answers object for answers that dont have the selected id
-      // then re-set the answers
-      const filteredAnswers = Object.keys(props.answers).filter(answer => answer.id !== 2709988)
-      props.setAnswers({filteredAnswers})
+      console.log('update!')
+      props.item.question_helpfulness += 1
+      props.setQuestions(props.data)
+      console.log(props.item.question_helpfulness)
+
     })
     .catch((error) => {
       console.log(error)
     })
   }
 
-
-
   return (
     <Container id="question" >
 
     <Card style={{padding: '10px', backgroundColor: "rgb(214,234,248)"}}>
-      { 'Q: ' + props.questions}
+      <Row>
+      { 'Q: ' + props.questions + ' Helpful? ' + '(' + props.helpfulness + ')'}
+      <Button onClick={updateQuestionHelpfulness}>yes</Button>
+      </Row>
       <AnswerForm  setAnswerBody={props.setAnswerBody} addPhotos={props.addPhotos} setNickname={props.setNickname} setEmail={props.setEmail} body={props.body} nickname={props.nickname} email={props.email} id={props.id} answers={props.answers} setAnswers={props.setAnswers}/>
     </Card>
 
-      {first2Answers.map((answer, i) => (
-        <Container key={i}>
-          <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}} >{'A: ' + answer.body}</Row>
-          <Row >{'by ' + answer.answerer_name + ' ' + dateParser(answer.date) + '   ' + 'Helpful?'}</Row>
-        </Container>
+    {first2Answers.map((answer, i) => (
+      <Container key={i}>
+        <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}} >{'A: ' + answer.body}</Row>
+        <Row >{'by ' + answer.answerer_name + ' ' + dateParser(answer.date) + ' Helpful? ' + '(' + answer.helpfulness + ')'}</Row>
+      </Container>
       ))}
 
       {!props.loading &&
@@ -72,7 +72,8 @@ function Question(props) {
                      {Object.keys(props.answers).slice(2).map((key, i) => (
                        <Card key={i}>
                          <Row style={{padding: '12px', backgroundColor: "rgb(242,244,244)"}}>{'A: ' + props.answers[key].body}</Row>
-                         <Row >{'by ' + props.answers[key].answerer_name + ' ' + dateParser(props.answers[key].date) + ' Helpful?'}</Row>
+                         <Row >{'by ' + props.answers[key].answerer_name + ' ' + dateParser(props.answers[key].date) + ' Helpful? ' + '(' + props.answers[key].helpfulness + ')'}
+                         </Row>
                        </Card>
                       ))}
                  </Card>
@@ -88,5 +89,3 @@ function Question(props) {
 }
 
 export default Question;
-
-

@@ -49,7 +49,9 @@ function QandA(props) {
       product_id: 24156,
       question_body: question_body,
       answers: {},
-      'question_id': newId
+      'question_id': newId,
+      question_helpfulness: 0,
+      reported: false
     }
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions', article, {headers})
     .then((response) => {
@@ -74,7 +76,7 @@ function QandA(props) {
   return (
     <Container>
       <h3>Questions and Answers</h3>
-      <QuestionsSearch/>
+      <QuestionsSearch data={questions} setQuestions={setQuestions}/>
       {!loading &&
       <QuestionsList data={questions} loading={loading} setQuestions={setQuestions} setName={setName} setNickname={setNickname} setEmail={setEmail} setAnswerBody={setAnswerBody} addPhotos={addPhotos} body={body} nickname={nickname} email={email} setAnswers={setAnswers}/>
       }

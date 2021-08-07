@@ -29,7 +29,6 @@ function AnswerForm(props) {
     var newSet = Object.create(props.answers)
     axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${props.id}/answers`, answerObj, {headers})
     .then((response) => {
-      // var newSet = Object.create(props.answers)
       props.setAnswers(Object.assign(newSet, answerObj))
       console.log(props.answers, answerObj)
     })
