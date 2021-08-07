@@ -58,7 +58,7 @@ function Question(props) {
   return (
     <Container id="question" >
 
-    <Row style={{padding: '6px', backgroundColor: "rgb(214,234,248)"}}>
+    <Row style={{padding: '6px', backgroundColor: "rgb(169, 194, 222)"}}>
 
       <Col>{ 'Q: ' + props.questions}</Col>
       <Col md="auto" style={{top: "50px"}}>{'Helpful? ' + '(' + props.helpfulness + ')'}</Col>

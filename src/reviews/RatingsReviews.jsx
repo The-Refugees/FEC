@@ -88,7 +88,7 @@ const RatingsReviews = (props) => {
           <Row>
             <Col sm={10}>
               <Button
-                variant="primary"
+                id="customButton"
                 onClick={() => setNewReviewClicked(!newReviewClicked)}
               >
                 Write New Review
@@ -114,7 +114,7 @@ const RatingsReviews = (props) => {
                 {totalReviews > 2 &&
                   reviewPage * 2 < totalReviews &&
                   <Button
-                    variant="primary"
+                    id="customButton"
                     onClick={() => setReviewPage(reviewPage + 1)}
                   >
                     More Reviews
